@@ -33,7 +33,7 @@ class AuthController extends Controller
           ]);
     }
 
-    public function registrationProcess(Request $request) {
+    public function registerProcess(Request $request) {
         $request->validate([
             'name' => 'required',
             'username' => 'required',
@@ -49,7 +49,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('home')->withSuccess('Register Successful!');
+        return redirect('')->withSuccess('Register Successful!');
     }
 
     public function loginProcess(Request $request) {
@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('home')->with('success', 'Login Successful!');
+            return redirect()->intended('')->with('success', 'Login Successful!');
         }
 
         return redirect('login')->with('error', 'Invalid Credentials!');
