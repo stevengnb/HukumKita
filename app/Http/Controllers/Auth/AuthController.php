@@ -14,11 +14,11 @@ class AuthController extends Controller
 {
     //
     public function login() {
-        return view('login');
+        return view('auth.login');
     }
 
     public function register() {
-        return view('register');
+        return view('auth.register');
     }
 
     public function create(array $data) {
@@ -54,16 +54,16 @@ class AuthController extends Controller
 
     public function loginProcess(Request $request) {
         $request->validate([
-            'name' => 'required',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
         $credentials = $request->only('email', 'password');
-        if(Auth::attempt($credentials)) {
-            return redirect()->intended('home')->withSuccess('Login Successful!');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('home')->with('success', 'Login Successful!');
         }
 
-        return redirect('login')->withErrors('Invalid Credentials!');
+        return redirect('login')->with('error', 'Invalid Credentials!');
     }
 
     public function logout():RedirectResponse
