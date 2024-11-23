@@ -7,11 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    @if (Auth::guard('lawyer')->check())
-        <h1>LAWYER YG LOGIN</h1>
-    @else
-        <h1>USER YG LOGIN</h1>
-    @endif
+    <h1>LAWYER DASHBOARD</h1>
     <form method="POST" action="{{ route('logout') }}">
         @csrf
         <div class="d-grid my-3">
