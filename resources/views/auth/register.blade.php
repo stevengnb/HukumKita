@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registers</title>
+    <title>Register - LawConnect</title>
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/component.css') }}">
-    {{-- ini pake bootstrap items mau pake cdn ato engga? ini gw pake cdn dlu --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/component.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+    {{-- ini pake bootstrap icons mau pake cdn ato engga? ini gw pake cdn dlu --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
 </head>
 <body>
@@ -19,11 +21,11 @@
             <div class="logo">
                 <img src="{{ asset('LawConnect.png') }}" alt="LawConnect Logo">
                 <h2>Seeking Justice Together</h2>
-                <p>Consult your legal issues, anytime and anywhere</p>
+                <p>Consult your legal issues, anytime and anywhere with LawConnect</p>
             </div>
 
             <div class="in">
-                <h2>Register to LawConnect</h2>
+                <h2 class="mb-3">Register to LawConnect</h2>
                 <form class="form" method="POST" action="{{ route('register.process') }}">
                     @csrf
                     <div>
@@ -45,10 +47,10 @@
                                 {{-- <input name="gender" type="text" class="form-control" id="gender" placeholder="Your gender.."> --}}
                                 <div class="d-flex">
                                     <input type="radio" class="btn-check" name="gender" id="male" value="male" autocomplete="off" required>
-                                    <label class="btn btn-outline-primary flex-fill" style="border-top-right-radius: 0; border-bottom-right-radius: 0" for="male">Male</label>
+                                    <label class="btn btn-outline-secondary flex-fill" style="border-top-right-radius: 0; border-bottom-right-radius: 0" for="male">Male</label>
 
                                     <input type="radio" class="btn-check" name="gender" id="female" value="female" autocomplete="off" required>
-                                    <label class="btn btn-outline-primary flex-fill" style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0" for="female">Female</label>
+                                    <label class="btn btn-outline-secondary flex-fill" style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0" for="female">Female</label>
                                 </div>
                             </div>
                             <div class="flex-fill">
@@ -70,7 +72,12 @@
                     </div>
                     <div class="d-grid mt-5">
                         <button class="btn btn-dark btn-lg" type="submit">{{ __('Register') }}</button>
-                        <p class="mt-3 text-center">Already have a LawConnect account? <a href="{{ route('login') }}">Login</a></p>
+                        <p class="mt-3 mb-0 text-center">Already have a LawConnect account? <a href="{{ route('login') }}">Login</a></p>
+                        <div class="divider"></div>
+                        <p class="mb-2">Join us as a LawConnect Lawyer</p>
+                        <a class="btn btn-outline-dark" href="{{ route('lawyer.register') }}">
+                            Join as a Lawyer <i class="bi bi-arrow-right-circle"></i>
+                        </a>
                     </div>
 
                     @if($errors->any())

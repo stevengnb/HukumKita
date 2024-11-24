@@ -63,3 +63,54 @@
     transform: translateY(-50%);
     cursor: pointer;
 }
+
+/* lawyer register page */
+
+.progress-container .circle{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* background-color: #153969; */
+    border: 1px #6c757d solid;
+    color: #6c757d;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-container .step{
+    width: 200px;
+}
+
+.progress-container .line{
+    border-radius: 100pt;
+    margin-top: 20px;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 35%;
+    flex: 1;
+    background-color: rgba(108, 117, 125, 0.1);
+}
+
+.progress-container .active{
+    background-color: #153969;
+    color: white;
+    box-shadow: 0px 2px 10px rgba(21, 57, 105, 0.5);
+
+    transition: background-color 0.3s ease-out, box-shadow 0.3s ease-out, color 0.3s ease-out;
+}
+
+
+.progress-container .line-active{
+    background-color: rgba(21, 57, 105, 1);
+
+    transition: background-color 0.3s ease-out;
+}
+
+.progress-container{
+    font-size: small;
+}
+
+#nextToStep2{
+    width: fit-content;
+}

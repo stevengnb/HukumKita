@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Login - LawConnect</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/component.css') }}">
-    {{-- ini pake bootstrap items mau pake cdn ato engga? ini gw pake cdn dlu --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/component.css') }}"> --}}
+    {{-- ini pake bootstrap icons mau pake cdn ato engga? ini gw pake cdn dlu --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
 </head>
 
@@ -20,10 +21,10 @@
             <div class="logo">
                 <img src="{{ asset('LawConnect.png') }}" alt="LawConnect Logo">
                 <h2>Seeking Justice Together</h2>
-                <p>Consult your legal issues, anytime and anywhere</p>
+                <p>Consult your legal issues, anytime and anywhere with LawConnect</p>
             </div>
             <div class="in">
-                <h2 class="mb-5">Login to LawConnect</h2>
+                <h2 class="mb-3">Login to LawConnect</h2>
                 <form class="form" method="POST" action="{{ route('login.process') }}">
                     @csrf
                     <div>
@@ -41,7 +42,13 @@
                     </div>
                     <div class="d-grid mt-5">
                         <button class="btn btn-dark btn-lg" type="submit">{{ __('Login') }}</button>
-                        <p class="mt-3 text-center">Don't have a LawConnect account yet? <a href="{{ route('register') }}">Register</a></p>
+                        <p class="mt-3 mb-0 text-center">Don't have a LawConnect account yet? <a href="{{ route('register') }}">Register</a></p>
+
+                        <div class="divider"></div>
+                        <p class="mb-2">Are you a LawConnect Lawyer?</p>
+                        <a class="btn btn-outline-dark d-flex align-items-center justify-content-center" href="{{ route('lawyer.login') }}">
+                            Login as a Lawyer <i class="bi bi-arrow-right-circle ms-2 d-flex"></i>
+                        </a>
                     </div>
 
                     @if($errors->any())

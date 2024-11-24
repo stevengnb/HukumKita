@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    font-family: "Fustat", serif;
+}
+
+
+.divider{
+    display: flex;
+    width: 80%;
+    flex: 1;
+    height: 1px;
+    background-color: #dee2e6;
+    margin: 20px auto;
+}
