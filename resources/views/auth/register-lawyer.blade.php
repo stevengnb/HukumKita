@@ -29,7 +29,7 @@
                 <div class="progress-container d-flex flex-row flex-fill justify-content-around position-relative">
                     <div class="step d-flex flex-column align-items-center" id="step-progress-1">
                         <span class="circle active mb-2">1</span>
-                        <p>User Details</p>
+                        <p>Account Details</p>
                     </div>
                     <div class="line d-flex flex-fill position-absolute"></div>
                     <div class="step d-flex flex-column align-items-center" id="step-progress-2">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <form class="form" method="POST" action="{{ route('lawyer.register.process') }}">
+                <form class="form" method="POST" action="{{ route('lawyer.register.process') }}" enctype="multipart/form-data">
                     @csrf
                     <div id="step-1">
                         <div class="mb-3">
@@ -77,7 +77,7 @@
                                 <input name="dob" type="date" class="form-control" id="dob" placeholder="">
                             </div>
                         </div>
-                        <div class="d-flex align-items-end mt-5" style="width: 100%">
+                        <div class="d-flex align-items-end" style="width: 100%">
                             <button type="button" id="nextToStep2" class="btn btn-outline-dark d-flex align-items-center justify-content-center ms-auto">
                                 Next <i class="bi bi-arrow-right-circle ms-2 d-flex"></i>
                             </button>
@@ -85,7 +85,11 @@
                     </div>
 
                     <div id="step-2" style="display: none;">
-
+                        <div class="mb-3 d-flex flex-column">
+                            <label for="profile">Upload Profile Picture</label>
+                            <img id="image_preview" class="rounded-circle mx-auto" src="https://lh5.googleusercontent.com/proxy/t08n2HuxPfw8OpbutGWjekHAgxfPFv-pZZ5_-uTfhEGK8B5Lp-VN4VjrdxKtr8acgJA93S14m9NdELzjafFfy13b68pQ7zzDiAmn4Xg8LvsTw1jogn_7wStYeOx7ojx5h63Gliw" alt="Preview Image" style="width: 200px; height: 200px; object-fit: cover; margin-top: 10px;">
+                            <input required type="file" class="form-control-file" style="display: none;" id="profile" name="profile" accept="image/*" onchange="previewImage(event)">
+                        </div>
                         <div class="mb-3">
                             <label for="education" class="form-label">Education</label>
                             <input name="education" type="text" class="form-control" id="education" placeholder="">
@@ -94,15 +98,17 @@
                             <label for="address" class="form-label">Address</label>
                             <input name="address" type="text" class="form-control" id="address" placeholder="">
                         </div>
-                        <div class="mb-3">
-                            <label for="experience" class="form-label">Experience Start Date</label>
-                            <input name="experience" type="date" class="form-control" id="experience" placeholder="">
+                        <div class="mb-3 d-flex flex-row gap-3">
+                            <div class="flex-fill">
+                                <label for="experience" class="form-label">Experience Start Date</label>
+                                <input name="experience" type="date" class="form-control" id="experience" placeholder="">
+                            </div>
+                            <div class="flex-fill">
+                                <label for="rate" class="form-label">Rate</label>
+                                <input name="rate" type="number" class="form-control" id="rate" placeholder="">
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="rate" class="form-label">Rate</label>
-                            <input name="rate" type="number" class="form-control" id="rate" placeholder="">
-                        </div>
-                        <div class="d-grid mt-5">
+                        <div class="d-grid">
                             <button type="button" id="backToStep1" class="btn btn-outline-dark d-flex align-items-center justify-content-center mb-3" style="width: fit-content">
                                 <i class="bi bi-arrow-left-circle me-2 d-flex"></i> Back
                             </button>
@@ -173,6 +179,14 @@
         togglePassword.classList.toggle('bi-eye');
     });
 
+    function previewImage(event) {
+        const imagePreview = document.getElementById('image_preview');
+        imagePreview.src = URL.createObjectURL(event.target.files[0]);
+    }
 
+    const imgPreview = document.getElementById('image_preview');
+    imgPreview.addEventListener('click', () => {
+        document.getElementById('profile').click();
+    });
 </script>
 </html>

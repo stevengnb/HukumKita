@@ -105,7 +105,7 @@ class AuthController extends Controller
         if($request->hasFile('profile')) {
             $data['profile'] = $request->file('profile')->store('lawyer_profiles', 'public');
         }
-
+        
         $lawyer = $this->createLawyer($data);
         Auth::guard('lawyer')->login($lawyer);
 
