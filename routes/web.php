@@ -1,11 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth:web,lawyer');
+Route::get('/', [HomeController::class, 'home'])->middleware('auth:web,lawyer');
 
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
