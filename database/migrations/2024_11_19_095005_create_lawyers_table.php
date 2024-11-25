@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('experience');
             $table->date('dob');
             $table->integer('rate');
+            $table->string('profile');
         });
     }
 

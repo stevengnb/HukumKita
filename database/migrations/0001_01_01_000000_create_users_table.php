@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('username');
             $table->string(column: 'phoneNumber');
             $table->string(column: 'gender');
+            $table->string('profile');
             $table->date(column: 'dob');
             $table->string(column: 'password');
             // $table->rememberToken();

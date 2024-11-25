@@ -40,7 +40,8 @@ class AuthController extends Controller
             'phoneNumber' => $data['phoneNumber'],
             'gender' => $data['gender'],
             'dob' => $data['dob'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'profile' => $data['profile'],
           ]);
     }
 
@@ -53,9 +54,14 @@ class AuthController extends Controller
             'dob' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'profile' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         $data = $request->all();
+        if($request->hasFile('profile')) {
+            $data['profile'] = $request->file('profile')->store('user_profiles', 'public');
+        }
+
         $user = $this->create($data);
 
         Auth::login($user);
@@ -75,6 +81,7 @@ class AuthController extends Controller
             'address' => $data['address'],
             'experience' => $data['experience'],
             'rate' => $data['rate'],
+            'profile' => $data['profile'],
         ]);
     }
 
@@ -91,11 +98,15 @@ class AuthController extends Controller
             'address' => 'required',
             'experience' => 'required',
             'rate' => 'required',
+            'profile' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         $data = $request->all();
+        if($request->hasFile('profile')) {
+            $data['profile'] = $request->file('profile')->store('lawyer_profiles', 'public');
+        }
+        
         $lawyer = $this->createLawyer($data);
-
         Auth::guard('lawyer')->login($lawyer);
 
         return redirect('/')->with('success', 'Registration Successful!');
