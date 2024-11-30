@@ -29,4 +29,9 @@ class Lawyer extends Authenticatable
         'remember_token',
     ];
 
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
 }

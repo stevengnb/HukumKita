@@ -27,7 +27,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Lawyers/Consultant</a>
+                <a class="nav-link" href="{{ route('getLawyers') }}">Lawyers/Consultant</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="articles">Articles</a>
@@ -35,8 +35,14 @@
             </ul>
 
             <div class="dropdown d-flex">
-                <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img style="width: 50px" src="https://lh5.googleusercontent.com/proxy/t08n2HuxPfw8OpbutGWjekHAgxfPFv-pZZ5_-uTfhEGK8B5Lp-VN4VjrdxKtr8acgJA93S14m9NdELzjafFfy13b68pQ7zzDiAmn4Xg8LvsTw1jogn_7wStYeOx7ojx5h63Gliw" alt="">
+                <a class="profile-img" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @if (Auth::guard('lawyer')->check())
+                    <img src="{{Storage::url(Auth::guard('lawyer')->user()->profile)}}" alt="">
+
+                    @else
+                    <img src="{{Storage::url(Auth::user()->profile)}}" alt="">
+                    @endif
+
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>

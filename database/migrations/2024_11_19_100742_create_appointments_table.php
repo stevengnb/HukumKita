@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->timestamps();
-            $table->unsignedBigInteger('lawyerId');
-            $table->unsignedBigInteger(column: 'userId');
-            $table->primary(['lawyerId', 'userId']);
-            $table->foreign('lawyerId')->references('id')->on('lawyers');
-            $table->foreign('userId')->references('id')->on('users');
+            $table->unsignedBigInteger('lawyer_id');
+            $table->unsignedBigInteger(column: 'user_id');
+            $table->primary(['lawyer_id', 'user_id']);
+            $table->foreign('lawyer_id')->references('id')->on('lawyers');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->date('date');
             $table->string('address');
             $table->decimal('rating');
