@@ -54,7 +54,7 @@ class AuthController extends Controller
             'dob' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'profile' => 'required|image|mimes:jpeg,png,jpg',
+            'profile' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ]);
 
         $data = $request->all();
@@ -105,7 +105,7 @@ class AuthController extends Controller
         if($request->hasFile('profile')) {
             $data['profile'] = $request->file('profile')->store('lawyer_profiles', 'public');
         }
-        
+
         $lawyer = $this->createLawyer($data);
         Auth::guard('lawyer')->login($lawyer);
 
