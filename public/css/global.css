@@ -13,3 +13,12 @@
     background-color: #dee2e6;
     margin: 20px auto;
 }
+
+.underline{
+    text-decoration: none;
+    transition: text-decoration 0.5s ease-in-out;
+}
+
+.underline:hover{
+    text-decoration: underline;
+}

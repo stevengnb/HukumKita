@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Article;
 
 class ArticleController extends Controller
 {
-    public function showArticles(){
-        return view('article');
+    public function showArticles()
+    {
+        $articles = Article::paginate(8);
+
+        return view('article', compact('articles'));
     }
 }
