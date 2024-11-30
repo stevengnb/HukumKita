@@ -82,6 +82,15 @@
                                 Next <i class="bi bi-arrow-right-circle ms-2 d-flex"></i>
                             </button>
                         </div>
+                        <div class="mb-3">
+                            <label for="expertise" class="form-label">Areas of Expertise</label>
+                            <select name="expertise[]" id="expertise" class="form-select" multiple>
+                                @foreach ($expertiseOptions as $expertise)
+                                    <option value="{{ $expertise->id }}">{{ $expertise->name }}</option>
+                                @endforeach
+                            </select>
+                            <small class="form-text text-muted">Hold down Ctrl (Windows) or Command (Mac) to select multiple options.</small>
+                        </div>
                     </div>
 
                     <div id="step-2" style="display: none;">

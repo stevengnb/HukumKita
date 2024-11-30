@@ -39,6 +39,15 @@ class LawyerFactory extends Factory
             'Self-Taught',
         ];
 
+        $categories = [
+            "Perkawinan & Perceraian",
+            "Perdata",
+            "Ketenagakerjaan",
+            "Pertanahan",
+            "Perpajakan",
+            "Pidana"
+        ];
+
         return [
             'name' => $this->faker->firstName().' '.$this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Expertise;
 use App\Models\Lawyer;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
@@ -29,7 +30,8 @@ class AuthController extends Controller
 
     public function registerLawyer()
     {
-        return view('auth.register-lawyer');
+        $expertiseOptions = Expertise::all();
+        return view('auth.register-lawyer', compact('expertiseOptions'));
     }
 
     public function create(array $data) {
@@ -87,7 +89,7 @@ class AuthController extends Controller
 
     public function registerProcessLawyer(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:lawyers,email',
             'phoneNumber' => 'required',
@@ -99,6 +101,8 @@ class AuthController extends Controller
             'experience' => 'required',
             'rate' => 'required',
             'profile' => 'required|image|mimes:jpeg,png,jpg',
+            'expertise' => 'required|array',
+            'expertise.*' => 'exists:expertises,id'
         ]);
 
         $data = $request->all();
@@ -107,6 +111,7 @@ class AuthController extends Controller
         }
 
         $lawyer = $this->createLawyer($data);
+        $lawyer->expertises()->attach($validated['expertise']);
         Auth::guard('lawyer')->login($lawyer);
 
         return redirect('/')->with('success', 'Registration Successful!');

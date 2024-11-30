@@ -9,4 +9,11 @@ class Expertise extends Model
 {
     /** @use HasFactory<\Database\Factories\ExpertiseFactory> */
     use HasFactory;
+
+    protected $fillable = ['name'];
+
+    public function lawyers()
+    {
+        return $this->belongsToMany(Lawyer::class, 'lawyers_expertises', 'expertiseId', 'lawyerId');
+    }
 }
