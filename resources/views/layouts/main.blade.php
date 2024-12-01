@@ -13,7 +13,7 @@
     @yield('custom-styles')
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5" style="position: fixed; width: 100%;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5" style="position: fixed; width: 100%; top:0;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#" style="width: 10%">
             <img src="{{ asset('LawConnect-Horizontal.png') }}" style="width: 100%" alt="">
@@ -61,7 +61,9 @@
           </div>
         </div>
     </nav>
-    @yield('content')
+    <div style="margin: 8rem 12rem; padding:1px;">
+        @yield('content')
+    </div>
     <footer>
         <div class="part">
             <div class="part-one-top">
