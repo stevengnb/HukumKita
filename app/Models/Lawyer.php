@@ -36,6 +36,6 @@ class Lawyer extends Authenticatable
 
     public function expertises()
     {
-        return $this->belongsToMany(Expertise::class, 'lawyers_expertises', 'lawyerId', 'expertiseId');
+        return $this->belongsToMany(Expertise::class, 'lawyers_expertises', 'lawyer_id', 'expertise_id');
     }
 }

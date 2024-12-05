@@ -1,5 +1,41 @@
 .containerLawyer {
-    height: 100vh;
     width: 100%;
-    padding-top: 10vh;
+    /* padding-top: 10vh; */
+    /* padding: 10vh 30vh; */
+}
+
+.lawyers-list img{
+    aspect-ratio: 5/3;
+    /* height: 100px; */
+    object-fit: cover;
+}
+
+.divider-vertical{
+    display: flex;
+    width: 1pt;
+    height: 15px;
+    background-color: gray;
+}
+
+.expertise{
+    background-color: rgba(21, 57, 105, 1);
+}
+
+
+.filter-form{
+    height: fit-content;
+}
+
+.search-form{
+    top: 100px;
+}
+
+.filter-form{
+    top:150px;
+    margin-top: 12px;
+}
+
+.lawyers-list .card{
+    margin-top: 12px;
+    text-decoration: none;
 }

@@ -59,7 +59,8 @@ class LawyerFactory extends Factory
             'experience' => $this->faker->dateTimeBetween('1990-01-01', '2020-01-01'),
             'dob' => $this->faker->dateTimeBetween('1950-01-01', '2000-01-01'),
             'rate' => $this->faker->randomFloat(1, 0, 5),
-            'profile' => 'images/lawyer.jpg',
+            // 'rate' => $this->faker->randomElement([50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 140000, 150000]),
+            'profile' => 'lawyer_profiles/lawyer.jpg',
         ];
     }
 }

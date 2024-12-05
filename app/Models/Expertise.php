@@ -14,6 +14,6 @@ class Expertise extends Model
 
     public function lawyers()
     {
-        return $this->belongsToMany(Lawyer::class, 'lawyers_expertises', 'expertiseId', 'lawyerId');
+        return $this->belongsToMany(Lawyer::class, 'lawyers_expertises', 'expertise_id', 'lawyer_id');
     }
 }

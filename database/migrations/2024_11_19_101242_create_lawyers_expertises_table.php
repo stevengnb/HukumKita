@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('lawyers_expertises', function (Blueprint $table) {
             $table->timestamps();
-            $table->unsignedBigInteger('lawyerId');
-            $table->unsignedBigInteger(column: 'expertiseId');
-            $table->primary(['lawyerId', 'expertiseId']);
-            $table->foreign('lawyerId')->references('id')->on('lawyers');
-            $table->foreign('expertiseId')->references('id')->on('expertises');
+            $table->unsignedBigInteger('lawyer_id');
+            $table->unsignedBigInteger(column: 'expertise_id');
+            $table->primary(['lawyer_id', 'expertise_id']);
+            $table->foreign('lawyer_id')->references('id')->on('lawyers');
+            $table->foreign('expertise_id')->references('id')->on('expertises');
         });
     }
 

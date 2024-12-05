@@ -18,6 +18,7 @@ class LawyersExpertiseFactory extends Factory
     {
         return [
             //
+
         ];
     }
 }

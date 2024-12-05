@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\LawyersExpertise;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             ExpertiseSeeder::class,
+            LawyerSeeder::class,
+            // LawyersExpertiseSeeder::class,
         ]);
     }
 }

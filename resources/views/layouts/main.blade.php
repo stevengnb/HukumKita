@@ -13,7 +13,7 @@
     @yield('custom-styles')
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5" style="position: fixed; width: 100%; top:0;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5 z-3" style="position: fixed; width: 100%; top:0;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#" style="width: 10%">
             <img src="{{ asset('LawConnect-Horizontal.png') }}" style="width: 100%" alt="">
@@ -27,7 +27,7 @@
                 <a class="nav-link active" aria-current="page" href="/#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('getLawyers') }}">Lawyers/Consultant</a>
+                <a class="nav-link" href="{{ route('getLawyers') }}">Lawyers</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/articles">Articles</a>

@@ -64,12 +64,12 @@
                             <div class="flex-fill">
                                 <label for="gender" class="form-label">Gender</label>
                                 {{-- <input name="gender" type="text" class="form-control" id="gender" placeholder="Your gender.."> --}}
-                                <div class="d-flex">
+                                <div class="d-flex btn-group">
                                     <input type="radio" class="btn-check" name="gender" id="male" value="male" autocomplete="off">
-                                    <label class="btn btn-outline-secondary flex-fill" style="border-top-right-radius: 0; border-bottom-right-radius: 0" for="male">Male</label>
+                                    <label class="btn btn-outline-dark" for="male">Male</label>
 
                                     <input type="radio" class="btn-check" name="gender" id="female" value="female" autocomplete="off">
-                                    <label class="btn btn-outline-secondary flex-fill" style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0" for="female">Female</label>
+                                    <label class="btn btn-outline-dark" for="female">Female</label>
                                 </div>
                             </div>
                             <div class="flex-fill">
@@ -82,30 +82,43 @@
                                 Next <i class="bi bi-arrow-right-circle ms-2 d-flex"></i>
                             </button>
                         </div>
-                        <div class="mb-3">
-                            <label for="expertise" class="form-label">Areas of Expertise</label>
-                            <select name="expertise[]" id="expertise" class="form-select" multiple>
-                                @foreach ($expertiseOptions as $expertise)
-                                    <option value="{{ $expertise->id }}">{{ $expertise->name }}</option>
-                                @endforeach
-                            </select>
-                            <small class="form-text text-muted">Hold down Ctrl (Windows) or Command (Mac) to select multiple options.</small>
-                        </div>
                     </div>
 
                     <div id="step-2" style="display: none;">
                         <div class="mb-3 d-flex flex-column">
                             <label for="profile">Upload Profile Picture</label>
-                            <img id="image_preview" class="rounded-circle mx-auto" src="https://lh5.googleusercontent.com/proxy/t08n2HuxPfw8OpbutGWjekHAgxfPFv-pZZ5_-uTfhEGK8B5Lp-VN4VjrdxKtr8acgJA93S14m9NdELzjafFfy13b68pQ7zzDiAmn4Xg8LvsTw1jogn_7wStYeOx7ojx5h63Gliw" alt="Preview Image" style="width: 200px; height: 200px; object-fit: cover; margin-top: 10px;">
+                            <img id="image_preview" class="rounded-circle mx-auto" src="https://lh5.googleusercontent.com/proxy/t08n2HuxPfw8OpbutGWjekHAgxfPFv-pZZ5_-uTfhEGK8B5Lp-VN4VjrdxKtr8acgJA93S14m9NdELzjafFfy13b68pQ7zzDiAmn4Xg8LvsTw1jogn_7wStYeOx7ojx5h63Gliw" alt="Preview Image" style="width: 150px; height: 150px; object-fit: cover; margin-top: 10px;">
                             <input required type="file" class="form-control-file" style="display: none;" id="profile" name="profile" accept="image/*" onchange="previewImage(event)">
                         </div>
-                        <div class="mb-3">
-                            <label for="education" class="form-label">Education</label>
-                            <input name="education" type="text" class="form-control" id="education" placeholder="">
+                        <div class="mb-3 d-flex flex-row gap-3">
+                            <div class="flex-fill">
+                                <label for="education" class="form-label">Education</label>
+                                <input name="education" type="text" class="form-control" id="education" placeholder="">
+                            </div>
+                            <div class="flex-fill">
+                                <label for="address" class="form-label">Address</label>
+                                <input name="address" type="text" class="form-control" id="address" placeholder="">
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="form-label">Address</label>
-                            <input name="address" type="text" class="form-control" id="address" placeholder="">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="expertise" class="form-label">Areas of Expertise</label>
+                            <div class="d-flex flex-wrap gap-2">
+                                @foreach ($expertiseOptions as $expertise)
+                                    <input class="btn-check" type="checkbox" autocomplete="off" name="expertise[]" value="{{ $expertise->id }}" id="expertise-{{ $expertise->id }}"">
+                                    <label class="btn btn-outline-dark" style="font-size: 14px" for="expertise-{{ $expertise->id }}">{{ $expertise->name }}</label>
+                                @endforeach
+                            </div>
+
+                            <small class="form-text text-muted">Select multiple expertise by clicking the boxes.</small>
+                            {{-- <select name="expertise[]" id="expertise" class="form-select" multiple>
+                                @foreach ($expertiseOptions as $expertise)
+                                    <option value="{{ $expertise->id }}">{{ $expertise->name }}</option>
+                                @endforeach
+                            </select>
+                            <small class="form-text text-muted">Hold down Ctrl (Windows) or Command (Mac) to select multiple options.</small> --}}
                         </div>
                         <div class="mb-3 d-flex flex-row gap-3">
                             <div class="flex-fill">
