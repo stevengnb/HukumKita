@@ -39,8 +39,12 @@ class LawyerController extends Controller
 
         $lawyers = $query->paginate(8);
 
+
         foreach ($lawyers as $lawyer) {
             $averageRating = $lawyer->appointments->avg('rating');
+            $totalRatings = $lawyer->appointments->count();
+
+            $lawyer->appointments_total_ratings = $totalRatings;
             $lawyer->appointments_avg_rating = $averageRating ?: 0;
             $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
             $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();

@@ -5,8 +5,9 @@
 }
 
 .lawyers-list img{
-    aspect-ratio: 5/3;
-    /* height: 100px; */
+    /* aspect-ratio: 5/3; */
+    height: 199px;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -18,17 +19,20 @@
 }
 
 .expertise{
-    background-color: rgba(21, 57, 105, 1);
+    background-color: rgba(21, 57, 105, 0.15);
+    color: rgba(21, 57, 105, 1);
+    font-size: 10pt;
 }
 
 
 .filter-form{
     height: fit-content;
+    width: 35%;
 }
 
-.search-form{
+/* .search-form{
     top: 100px;
-}
+} */
 
 .filter-form{
     top:150px;
@@ -38,4 +42,19 @@
 .lawyers-list .card{
     margin-top: 12px;
     text-decoration: none;
+    height: 200px;
+}
+
+.lawyers-list{
+    width: 100%;
+}
+
+.search-wrapper{
+    background-color: white;
+    padding: 20px 0 10px 0;
+    top: 80px;
+}
+
+form{
+    background-color: white;
 }
