@@ -1,0 +1,10 @@
+.lawyer-img{
+    height: 250px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
+
+.expertise{
+    background-color: rgba(21, 57, 105, 0.15);
+    color: rgba(21, 57, 105, 1);
+}

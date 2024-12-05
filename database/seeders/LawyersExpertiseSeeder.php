@@ -15,13 +15,12 @@ class LawyersExpertiseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $lawyers = Lawyer::all();
-        // $expertises = Expertise::all();
+        $lawyers = Lawyer::all();
+        $expertises = Expertise::all();
 
-        // foreach ($lawyers as $lawyer) {
-        //     $randomExpertises = $expertises->random(rand(1, 3))->pluck('id')->toArray();
-        //     $lawyer->expertises()->attach($randomExpertises);
-        // }
-        LawyersExpertise::factory(15)->create();
+        foreach ($lawyers as $lawyer) {
+            $lawyer->expertises()->attach($expertises->random(rand(1, 3))->pluck('id')->toArray());
+        }
+        // LawyersExpertise::factory(15)->create();
     }
 }

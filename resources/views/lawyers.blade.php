@@ -42,7 +42,7 @@
 
             <div class="lawyers-list">
                 @foreach ($lawyers as $l)
-                    <a class="card mb-3" href="">
+                    <a class="card mb-3" href="{{ route('getLawyer', ['id'=>$l->id]) }}">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src={{ Storage::url($l->profile) }} class="img-fluid rounded-start">

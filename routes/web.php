@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home'])->middleware('auth:web,lawyer');
 Route::get('/articles', [ArticleController::class, 'showArticles']);
 Route::get('/articles/{id}', [ArticleController::class, 'showDetail']);
-
+Route::get('/lawyers/{id}', [LawyerController::class, 'getLawyer'])->name('getLawyer');
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');

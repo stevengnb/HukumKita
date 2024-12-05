@@ -58,9 +58,11 @@ class LawyerController extends Controller
 
 
     public function getLawyer($id) {
-        $lawyer = Lawyer::find($id);
+        $lawyer = Lawyer::with(['expertises', 'appointments'])->find($id);
         $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
         $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
+        $lawyer->appointments_total_ratings = $lawyer->appointments->count();
+        $lawyer->appointments_avg_rating = $lawyer->appointments->avg('rating') ?: 0;
 
         return view('lawyer-detail', compact('lawyer'));
     }

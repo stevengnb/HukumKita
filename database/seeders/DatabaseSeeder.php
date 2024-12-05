@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ExpertiseSeeder::class,
             LawyerSeeder::class,
-            // LawyersExpertiseSeeder::class,
+            LawyersExpertiseSeeder::class,
         ]);
     }
 }

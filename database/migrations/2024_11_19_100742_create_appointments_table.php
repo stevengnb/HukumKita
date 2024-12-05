@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('address');
             $table->decimal('rating');
+            $table->string('review');
             $table->string('status');
         });
     }
