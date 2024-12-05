@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('description');
             $table->date('createDate');
             $table->string('imagePath');
-            $table->unsignedBigInteger('lawyerId');
-            $table->foreign('lawyerId')->on('lawyers')->references('id');
+            $table->unsignedBigInteger('lawyer_id');
+            $table->foreign('lawyer_id')->on('lawyers')->references('id');
+            $table->unsignedBigInteger('expertise_id');
+            $table->foreign('expertise_id')->on('lawyers')->references('id');
         });
     }
 

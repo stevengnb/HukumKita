@@ -16,4 +16,8 @@ class Expertise extends Model
     {
         return $this->belongsToMany(Lawyer::class, 'lawyers_expertises', 'expertise_id', 'lawyer_id');
     }
+
+    public function articles() {
+        return $this->hasMany(Article::class, 'expertise_id', 'id');
+    }
 }

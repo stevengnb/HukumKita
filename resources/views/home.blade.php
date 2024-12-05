@@ -33,9 +33,9 @@
         <div class="cat">
             @foreach ($articles as $article)
                 <div class="card">
-                    <img style="border-radius: 5px;" src="{{ asset($article['image']) }}" alt="LawConnect Article">
-                    <div style="background-color: #44638B; color:white; padding: 5px; border-radius: 5px;">{{ $article['categories'] }}</div>
-                    <p style="font-weight: 700; font-size: 18px; padding: 0;">{{ $article['title'] }}</p>
+                    <img style="border-radius: 5px;" src="{{ asset('art.jpg') }}" alt="LawConnect Article">
+                    <div style="background-color: #44638B; color:white; padding: 5px; border-radius: 5px;">{{ $article->expertise->name }}</div>
+                    <p style="font-weight: 700; font-size: 18px; padding: 0;">{{ $article->title }}</p>
                 </div>
             @endforeach
         </div>

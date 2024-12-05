@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\Expertise;
 use App\Models\Lawyer;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class ArticleSeeder extends Seeder
 
         // All id from Lawyer
         $lawyersId = Lawyer::pluck('id')->toArray();
+        $categoryId = Expertise::pluck('id')->toArray();
 
         for ($i = 0; $i < 100; ++$i) {
             Article::insert([
@@ -25,7 +27,8 @@ class ArticleSeeder extends Seeder
                 'description' => $faker->text,
                 'createDate' => $faker->dateTimeBetween('-1 years', 'now'),
                 'imagePath' => 'images/law-article.jpg',
-                'lawyerId' => $faker->randomElement($lawyersId),
+                'lawyer_id' => $faker->randomElement($lawyersId),
+                'expertise_id' => $faker->randomElement($categoryId),
             ]);
         }
     }

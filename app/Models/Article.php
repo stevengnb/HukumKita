@@ -10,11 +10,14 @@ class Article extends Model
     /** @use HasFactory<\Database\Factories\ArticleFactory> */
     use HasFactory;
 
-    public function comments(): HasMany{
-        return $this->hasMany(Course::class);
-    }
+    // public function comments() {
+    //     return $this->hasMany(Course::class);
+    // }
 
-    public function writer(): BelongsTo{
-        return $this->belongsTo(Lawyer::class, id, lawyerId);
+    // public function writer() {
+    //     return $this->belongsTo(Lawyer::class, id, lawyerId);
+    // }
+    public function expertise() {
+        return $this->belongsTo(Expertise::class, 'expertise_id', 'id');
     }
 }

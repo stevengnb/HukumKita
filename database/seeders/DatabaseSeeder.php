@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ExpertiseSeeder::class,
             LawyerSeeder::class,
             LawyersExpertiseSeeder::class,
+            ArticleSeeder::class,
         ]);
     }
 }
