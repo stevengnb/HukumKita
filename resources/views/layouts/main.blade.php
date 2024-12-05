@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     @yield('custom-styles')
+    @yield('scripts')
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5 z-3" style="position: fixed; width: 100%; top:0;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5" style="position: fixed; width: 100%; top:0; z-index: 100;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#" style="width: 10%">
             <img src="{{ asset('LawConnect-Horizontal.png') }}" style="width: 100%" alt="">
