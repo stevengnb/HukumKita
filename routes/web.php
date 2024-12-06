@@ -7,7 +7,7 @@ use App\Http\Controllers\LawyerController;
 use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'home'])->middleware('auth:web,lawyer');
+Route::get('/', [HomeController::class, 'home'])->middleware('auth:web,lawyer')->name('home');
 Route::get('/articles', [ArticleController::class, 'showArticles']);
 Route::get('/articles/{id}', [ArticleController::class, 'showDetail']);
 Route::get('/lawyers/{id}', [LawyerController::class, 'getLawyer'])->name('getLawyer');

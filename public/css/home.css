@@ -7,6 +7,14 @@
     gap: 20px;
 }
 
+.containerHome img{
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    /* opacity: 1; */
+    filter: brightness(70%) blur(3px);
+}
+
 .article {
     /* height: 80vh; */
     display: flex;
@@ -24,13 +32,14 @@
 .consultation {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    /* border-radius: 10px; */
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
     padding: 70px;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    background: linear-gradient(to bottom, white, rgba(245, 245, 245, 0.637));
+    background-color: #153969;
+    /* background: linear-gradient(to bottom, white, rgba(245, 245, 245, 0.637)); */
 }
 
 .consultation h3 {
@@ -61,7 +70,7 @@
 .btn-12 {
     -webkit-tap-highlight-color: transparent;
     -webkit-appearance: button;
-    background-color: #000;
+    background-color: #153969;
     background-image: none;
     color: #fff;
     cursor: pointer;
@@ -72,7 +81,7 @@
     font-weight: 900;
     line-height: 1.5;
     margin: 0;
-    -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+    -webkit-mask-image: -webkit-radial-gradient(#153969, #fff);
     padding: 0;
     text-transform: uppercase;
 }
@@ -147,10 +156,10 @@
 .card {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    padding: 10px;
+    /* padding: 10px; */
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    /* gap: 10px; */
     transition: all 0.3s ease-in-out;
 }
 
@@ -168,7 +177,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     transition: all 0.3s ease-in-out;
 }
 

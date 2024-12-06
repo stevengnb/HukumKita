@@ -8,16 +8,17 @@
 
 @section('content')
 <div class="containerLawyer">
+    <h1>Browse Lawyers that Suit Your Needs</h1>
     <div class="search-wrapper position-sticky sticky-top px-0 z-3">
-        <form class="search-form d-flex " role="search" method="GET" action="{{ route('getLawyers') }}">
-            <input class="form-control me-2" type="search" name="search" placeholder="Search Lawyer's Name" aria-label="Search" value="{{ request('search') }}">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="search-form d-flex" role="search" method="GET" action="{{ route('getLawyers') }}">
+            <input class="form-control me-2 rounded-4 py-2 px-3" type="search" name="search" placeholder="Search Lawyer's Name" aria-label="Search" value="{{ request('search') }}">
+            <button class="btn btn-outline-success rounded-4" type="submit">Search</button>
         </form>
     </div>
 
     <div class="lawyer-list-container">
         <div class="d-flex flex-row flex-fill gap-3">
-            <form class="filter-form border border-1 rounded-3 p-4 position-sticky sticky-top z-2 d-flex flex-column" action="{{ route('getLawyers') }}" method="GET">
+            <form class="filter-form shadow-sm border border-1 rounded-4 p-4 position-sticky sticky-top z-2 d-flex flex-column" action="{{ route('getLawyers') }}" method="GET">
                 <div class="mb-3">
                     <label for="price_range" class="mb-2">Price Range</label>
                     <select class="form-select" name="price_range" id="price_range">
@@ -42,7 +43,7 @@
 
             <div class="lawyers-list">
                 @foreach ($lawyers as $l)
-                    <a class="card mb-3" href="{{ route('getLawyer', ['id'=>$l->id]) }}">
+                    <a class="card shadow-sm mb-3 rounded-4 overflow-hidden" href="{{ route('getLawyer', ['id'=>$l->id]) }}">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src={{ Storage::url($l->profile) }} class="img-fluid rounded-start">
@@ -50,7 +51,7 @@
                             <div class="col-md-8">
                                 <div class="card-body d-flex flex-column" style="height: 100%;">
                                     <div class="d-flex flex-column flex-grow-1">
-                                        <h5 class="card-title h4">{{ $l->name }}</h5>
+                                        <h5 class="card-title h4 fw-semibold">{{ $l->name }}</h5>
                                         <div class="d-flex flex-row align-items-center">
                                             <p class="card-text">{{ $l->exp_years }} Year(s) of Experience</p>
                                             <div class="mx-3 divider-vertical"></div>
@@ -62,14 +63,14 @@
                                         </div>
                                         <div class="d-flex flex-wrap gap-2 mt-2">
                                             @foreach ($l->expertise_names as $e)
-                                                <div class="p-2 rounded-3 expertise fw-semibold">{{ $e }}</div>
+                                                <div class="py-2 px-3 rounded-pill expertise fw-semibold">{{ $e }}</div>
                                             @endforeach
                                         </div>
                                     </div>
 
                                     <!-- Button Section (Rate & Consult) -->
                                     <div class="d-flex flex-row align-items-center justify-content-between mt-auto">
-                                        <h5 class="mb-0">@dollar($l->rate)</h5>
+                                        <h5 class="mb-0 fw-semibold">@dollar($l->rate)</h5>
                                         <button class="btn btn-dark">Consult</button>
                                     </div>
                                 </div>

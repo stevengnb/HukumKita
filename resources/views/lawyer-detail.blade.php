@@ -49,7 +49,7 @@
         <h5 class="fw-bold">Expertise</h5>
         <div class="d-flex flex-wrap gap-2 mt-2">
             @foreach ($lawyer->expertise_names as $e)
-                <div class="p-2 rounded-3 expertise fw-semibold">{{ $e }}</div>
+                <div class="py-2 px-3 rounded-pill expertise fw-semibold">{{ $e }}</div>
             @endforeach
         </div>
 
