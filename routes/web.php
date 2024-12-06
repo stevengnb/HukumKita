@@ -4,12 +4,16 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LawyerController;
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->middleware('auth:web,lawyer');
 Route::get('/articles', [ArticleController::class, 'showArticles']);
 Route::get('/articles/{id}', [ArticleController::class, 'showDetail']);
 Route::get('/lawyers/{id}', [LawyerController::class, 'getLawyer'])->name('getLawyer');
+Route::get('/lawyers/booking/{id}', [LawyerController::class, 'getLawyerBookingPage'])->name('getLawyerBooking');
+Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');

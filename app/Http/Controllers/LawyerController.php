@@ -58,17 +58,25 @@ class LawyerController extends Controller
 
 
     public function getLawyer($id) {
-        $lawyer = Lawyer::with(['expertises', 'appointments.user'])->find($id);
+        $lawyer = Lawyer::with(['expertises', 'appointments'])->find($id);
         $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
         $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
-        $lawyer->appointments_total_ratings = $lawyer->appointments->count();
-        $lawyer->appointments_avg_rating = $lawyer->appointments->avg('rating') ?: 0;
 
-        $lawyer->appointments->each(function($appointment) {
-            $appointment->user_name = $appointment->user->name;
-            $appointment->user_profile = $appointment->user->profile;
+        $completedAppointments = $lawyer->appointments->filter(function ($appointment) {
+            return !is_null($appointment->rating) && !is_null($appointment->review);
         });
 
+        $lawyer->appointments_total_ratings = $completedAppointments->count();
+        $lawyer->appointments_avg_rating = $completedAppointments->avg('rating') ?: 0;
+
         return view('lawyer-detail', compact('lawyer'));
+    }
+
+    public function getLawyerBookingPage($id) {
+        $lawyer = Lawyer::with(['expertises', 'appointments'])->find($id);
+        $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
+        $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
+
+        return view('bookAppointment', compact('lawyer'));
     }
 }

@@ -20,4 +20,18 @@ class Appointment extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected $fillable = [
+        'lawyer_id',
+        'user_id',
+        'dateTime',
+        'address',
+        'status',
+        'rating',
+        'review',
+    ];
+
+    protected $casts = [
+        'dateTime' => 'datetime',
+    ];
+
 }
