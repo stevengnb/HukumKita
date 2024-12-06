@@ -8,3 +8,9 @@
     background-color: rgba(21, 57, 105, 0.15);
     color: rgba(21, 57, 105, 1);
 }
+
+.reviews img{
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}

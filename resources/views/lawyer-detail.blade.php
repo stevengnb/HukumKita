@@ -25,24 +25,46 @@
             </div>
         </div>
 
-        <div>
-            <h3 class="mb-0">@dollar($lawyer->rate)</h3>
+        <div class="d-flex flex-column" style="width: 15%">
+            <h3 class="align-self-end mb-1">@dollar($lawyer->rate)</h3>
             <button class="btn btn-dark">Consult</button>
         </div>
     </div>
 
     <div>
-        <h5>Expertise</h5>
+        <h5 class="fw-bold">Expertise</h5>
         <div class="d-flex flex-wrap gap-2 mt-2">
             @foreach ($lawyer->expertise_names as $e)
                 <div class="p-2 rounded-3 expertise fw-semibold">{{ $e }}</div>
             @endforeach
         </div>
 
-        <h5><i class="bi bi-mortarboard"></i> Education</h5>
+        <h5 class="mt-3 fw-bold">Education</h5>
         <h6>{{$lawyer->education}}</h6>
 
-        <h5 class="mt-3"><i class="bi bi-star"></i> Reviews <span class="text-secondary">{{ $lawyer->appointments_total_ratings }} Ratings</span></h5>
+        <h5 class="mt-3 fw-bold">Reviews <span class="text-secondary ms-1 fw-normal" style="font-size: 12pt">{{ $lawyer->appointments_total_ratings }} Rating(s)</span></h5>
+        <div class="reviews">
+            @if ($lawyer->appointments_total_ratings > 0)
+                @foreach ($lawyer->appointments as $a)
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <i class="bi bi-star-fill me-1" style="color: #FEAF27;"></i>
+                                {{$a->rating}}<span class="text-secondary" style="font-size: 10pt">/5</span>
+                            </div>
 
+                            <div class="d-flex flex-row align-items-center mb-2">
+                                <img class="rounded-circle me-2" src="{{Storage::url($a->user->profile)}}" alt="">
+                                <h5 class="mb-0">{{ $a->user->name }}</h5>
+                            </div>
+
+                            <p class="card-text">{{ $a->review }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                    <h6>No Reviews</h6>
+            @endif
+        </div>
     </div>
 @endsection

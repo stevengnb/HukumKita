@@ -58,11 +58,16 @@ class LawyerController extends Controller
 
 
     public function getLawyer($id) {
-        $lawyer = Lawyer::with(['expertises', 'appointments'])->find($id);
+        $lawyer = Lawyer::with(['expertises', 'appointments.user'])->find($id);
         $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
         $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
         $lawyer->appointments_total_ratings = $lawyer->appointments->count();
         $lawyer->appointments_avg_rating = $lawyer->appointments->avg('rating') ?: 0;
+
+        $lawyer->appointments->each(function($appointment) {
+            $appointment->user_name = $appointment->user->name;
+            $appointment->user_profile = $appointment->user->profile;
+        });
 
         return view('lawyer-detail', compact('lawyer'));
     }

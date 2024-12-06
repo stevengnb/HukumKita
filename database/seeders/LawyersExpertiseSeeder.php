@@ -22,5 +22,6 @@ class LawyersExpertiseSeeder extends Seeder
             $lawyer->expertises()->attach($expertises->random(rand(1, 3))->pluck('id')->toArray());
         }
         // LawyersExpertise::factory(15)->create();
+
     }
 }
