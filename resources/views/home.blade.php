@@ -41,7 +41,7 @@
                     <img class="card-img-top" src="{{ asset('art.jpg') }}" alt="LawConnect Article">
 
                     <div class="card-body p-4">
-                        <div class="py-2 px-3 rounded-pill" style="background-color: rgba(21, 57, 105, 0.15); color: rgba(21, 57, 105, 1); width: fit-content; font-size: 12pt">{{ $article->expertise->name }}</div>
+                        <div class="py-2 px-3 rounded-pill" style="background-color: rgba(21, 57, 105, 0.15); color: rgba(21, 57, 105, 1); width: fit-content; font-size: 11pt">{{ $article->expertise->name }}</div>
                         <p class="h5 mb-0 mt-3">{{ $article->title }}</p>
                     </div>
 

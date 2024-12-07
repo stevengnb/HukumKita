@@ -1,0 +1,7 @@
+textarea:focus {
+    outline: none; /* Removes the focus outline */
+}
+
+textarea{
+    resize: none;
+}

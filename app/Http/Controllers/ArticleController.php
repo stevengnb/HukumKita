@@ -15,7 +15,7 @@ class ArticleController extends Controller
 
     public function showDetail($id)
     {
-        $article = Article::findOrFail($id);
+        $article = Article::with(['lawyer', 'comments.user'])->findOrFail($id);
 
         return view('articleDetail', compact('article'));
     }

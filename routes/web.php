@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LawyerController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->middleware('auth:web,lawyer')->name('home');
@@ -14,7 +15,7 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'getLawyer'])->name('getLa
 Route::get('/lawyers/booking/{id}', [LawyerController::class, 'getLawyerBookingPage'])->name('getLawyerBooking');
 Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
 Route::post('/update-rating-review/{userId}/{lawyerId}', [AppointmentController::class, 'updateRatingReview'])->name('updateRatingReview');
-
+Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');

@@ -20,4 +20,12 @@ class Article extends Model
     public function expertise() {
         return $this->belongsTo(Expertise::class, 'expertise_id', 'id');
     }
+
+    public function lawyer() {
+        return $this->belongsTo(Lawyer::class, 'lawyer_id', 'id');
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'article_id', 'id');
+    }
 }
