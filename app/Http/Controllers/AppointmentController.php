@@ -14,7 +14,9 @@ class AppointmentController extends Controller
         $validated = $request->validate([
             'lawyer_id' => 'required|exists:lawyers,id',
             'user_id' => 'required|exists:users,id',
-            'dateTime' => 'required|date',
+            'dateTime' => 'required|date|after_or_equal:tomorrow',
+        ], [
+            'dateTime.after_or_equal' => 'Appointments can only be scheduled starting from tomorrow onward.',
         ]);
 
         $lawyer = Lawyer::findOrFail($validated['lawyer_id']);
@@ -64,5 +66,27 @@ class AppointmentController extends Controller
 
         return view('lawyer/lawyerAppointments', compact('appointments'));
     }
+
+    public function updateRatingReview($userId, $lawyerId, Request $request)
+    {
+        $validated = $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'review' => 'required|string|max:1000',
+        ]);
+
+        Appointment::where('lawyer_id', $lawyerId)
+            ->where('user_id', $userId)
+            ->where('status', "Completed")
+            ->update([
+                'rating' => $validated['rating'],
+                'review' => $validated['review']
+            ]);
+
+        $appointments = Appointment::where('lawyer_id', $lawyerId)->get();
+
+        return redirect()->back()->with('success', 'Thank you for your review!');
+    }
+
+
 
 }

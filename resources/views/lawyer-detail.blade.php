@@ -33,6 +33,8 @@
                     <button class="btn btn-warning" disabled>Pending</button>
                 @elseif ($lawyer->user_appointment_status === 'Confirmed')
                     <button class="btn btn-success" disabled>Confirmed</button>
+                @elseif ($lawyer->user_appointment_status === 'Completed')
+                    <button class="btn btn-dark" disabled>Already Consulted</button>
                 @else
                     <a class="card mb-3" href="{{ route('getLawyerBooking', ['id' => $lawyer->id]) }}">
                         <button class="btn btn-dark">Consult</button>
@@ -52,15 +54,44 @@
             @endforeach
         </div>
 
-        <h5 class="mt-3 fw-bold">Education</h5>
+        <h5 class="mt-5 fw-bold">Education</h5>
         <h6>{{ $lawyer->education }}</h6>
 
-        <h5 class="mt-3 fw-bold">Reviews <span class="text-secondary ms-1 fw-normal"
+        {{-- Rating & Review Form HERE --}}
+        @if (auth()->check() && $lawyer->user_appointment_status === 'Completed')
+            <h5 class="mt-5 fw-bold">Give Rating and Review</h5>
+            <form action="{{ route('updateRatingReview', ['userId' => auth()->id(), 'lawyerId' => $lawyer->id]) }}"
+                method="POST" class="mt-2">
+                @csrf
+                <div class="mb-3">
+                    <label for="rating" class="form-label fw-bold">Rating</label>
+                    <select id="rating" name="rating" class="form-select" required>
+                        <option value="" disabled selected>Select Rating</option>
+                        @for ($i = 1; $i <= 5; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="review" class="form-label fw-bold">Review</label>
+                    <textarea class="form-control @error('review') is-invalid @enderror" id="review" name="review" rows="3"
+                        required>{{ old('review', $appointment->review ?? '') }}</textarea>
+                    @error('review')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+        @endif
+
+        <h5 class="mt-5 fw-bold">Reviews <span class="text-secondary ms-1 fw-normal"
                 style="font-size: 12pt">{{ $lawyer->appointments_total_ratings }} Rating(s)</span></h5>
         <div class="reviews">
             @if ($lawyer->appointments_total_ratings > 0)
                 @foreach ($completedAppointments as $a)
-                    <div class="card">
+                    <div class="card mb-2">
                         <div class="card-body">
                             <div class="mb-2">
                                 <i class="bi bi-star-fill me-1" style="color: #FEAF27;"></i>

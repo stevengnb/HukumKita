@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class LawyerController extends Controller
 {
     //
-    public function getLawyers(Request $req) {
+    public function getLawyers(Request $req)
+    {
         $query = Lawyer::with('expertises');
 
         // Check if price_range is set and apply the filter
@@ -26,7 +27,7 @@ class LawyerController extends Controller
 
         // Check if expertise is set and apply the filter
         if ($req->has('expertise')) {
-            if(!($req->input('expertise') == '')){
+            if (!($req->input('expertise') == '')) {
                 $query->whereHas('expertises', function ($q) use ($req) {
                     $q->where('id', $req->input('expertise'));
                 });
@@ -50,6 +51,12 @@ class LawyerController extends Controller
             $lawyer->appointments_avg_rating = $completedAppointments->avg('rating') ?: 0;
             $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
             $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
+
+            $lawyer->user_appointment_status = null;
+            if (Auth::check()) {
+                $userAppointment = $lawyer->appointments->where('user_id', auth()->user()->id)->first();
+                $lawyer->user_appointment_status = $userAppointment ? $userAppointment->status : null;
+            }
         }
 
         $expertises = Expertise::all();
@@ -59,7 +66,8 @@ class LawyerController extends Controller
 
 
 
-    public function getLawyer($id) {
+    public function getLawyer($id)
+    {
         $lawyer = Lawyer::with(['expertises', 'appointments'])->find($id);
         $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
         $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
@@ -81,7 +89,8 @@ class LawyerController extends Controller
         return view('lawyer-detail', compact('lawyer', 'completedAppointments'));
     }
 
-    public function getLawyerBookingPage($id) {
+    public function getLawyerBookingPage($id)
+    {
         $lawyer = Lawyer::with(['expertises', 'appointments'])->find($id);
         $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
         $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);

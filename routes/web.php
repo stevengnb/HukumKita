@@ -13,6 +13,7 @@ Route::get('/articles/{id}', [ArticleController::class, 'showDetail']);
 Route::get('/lawyers/{id}', [LawyerController::class, 'getLawyer'])->name('getLawyer');
 Route::get('/lawyers/booking/{id}', [LawyerController::class, 'getLawyerBookingPage'])->name('getLawyerBooking');
 Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+Route::post('/update-rating-review/{userId}/{lawyerId}', [AppointmentController::class, 'updateRatingReview'])->name('updateRatingReview');
 
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');

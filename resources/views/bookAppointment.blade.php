@@ -30,9 +30,18 @@
                     <input type="hidden" name="lawyer_id" value="{{ $lawyer->id }}">
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="dateTime" class="form-label">Select Date & Time</label>
                         <input type="datetime-local" id="dateTime" name="dateTime" class="form-control" required>
+                    </div> -->
+
+                    <div class="mb-3">
+                        <label for="dateTime" class="form-label">Select Date & Time</label>
+                        <input type="datetime-local" id="dateTime" name="dateTime"
+                            class="form-control @error('dateTime') is-invalid @enderror" required>
+                        @error('dateTime')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn btn-dark btn-lg">Book Appointment</button>
