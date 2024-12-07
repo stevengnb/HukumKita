@@ -20,7 +20,12 @@ Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('login-process', [AuthController::class, 'loginProcess'])->name('login.process');
 Route::post('register-process', [AuthController::class, 'registerProcess'])->name('register.process');
 Route::get('lawyers', [LawyerController::class, 'getLawyers'])->name('getLawyers');
+Route::get('myappointments', [AppointmentController::class, 'getUserAppointments'])->name('user.appointments');
 // Route::get('lawyer/{id}', [LawyerController::class, 'getLawyer'])->name('getLawyer');
+
+// lawyer routes
+Route::get('lawyer/myappointments', [AppointmentController::class, 'getLawyerAppointments'])->name('lawyer.appointments');
+Route::put('lawyer/myappointments/{userId}/{lawyerId}/{newStatus}', [AppointmentController::class, 'updateAppointmentStatus'])->name('updateAppointmentStatus');
 
 // lawyer auth
 Route::prefix('lawyer')->name('lawyer.')->group(function () {

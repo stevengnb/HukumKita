@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Appointment;
 use App\Models\Lawyer;
 
@@ -33,16 +34,35 @@ class AppointmentController extends Controller
             ->with('success', 'Appointment booked successfully!');
     }
 
-    // Function buat nanti si lawyer bisa ubah status Pending -> Confirm
-    // Route::post('/appointments/confirm/{appointment_id}', [AppointmentController::class, 'confirmAppointment'])->name('appointments.confirm');
-    public function confirmAppointment($appointment_id)
+    public function getUserAppointments()
     {
-        $appointment = Appointment::findOrFail($appointment_id);
+        $appointments = Appointment::with('lawyer')
+            ->where('user_id', auth()->id())
+            ->get();
 
-        // Update status to "Confirmed"
-        $appointment->status = 'Confirmed';
-        $appointment->save();
-
-        return redirect()->back()->with('success', 'Appointment confirmed!');
+        return view('userAppointments', compact('appointments'));
     }
+
+    public function getLawyerAppointments()
+    {
+        $lawyerId = Auth::guard('lawyer')->id();
+
+        $appointments = Appointment::with('user')
+            ->where('lawyer_id', $lawyerId)
+            ->get();
+
+        return view('lawyer/lawyerAppointments', compact('appointments'));
+    }
+
+    public function updateAppointmentStatus($userId, $lawyerId, $newStatus)
+    {
+        Appointment::where('lawyer_id', $lawyerId)
+            ->where('user_id', $userId)
+            ->update(['status' => $newStatus]);
+
+        $appointments = Appointment::where('lawyer_id', $lawyerId)->get();
+
+        return view('lawyer/lawyerAppointments', compact('appointments'));
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Models\Expertise;
 use App\Models\Lawyer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class LawyerController extends Controller
 {
@@ -41,11 +42,12 @@ class LawyerController extends Controller
 
 
         foreach ($lawyers as $lawyer) {
-            $averageRating = $lawyer->appointments->avg('rating');
-            $totalRatings = $lawyer->appointments->count();
+            $completedAppointments = $lawyer->appointments->filter(function ($appointment) {
+                return !is_null($appointment->rating) && !is_null($appointment->review);
+            });
 
-            $lawyer->appointments_total_ratings = $totalRatings;
-            $lawyer->appointments_avg_rating = $averageRating ?: 0;
+            $lawyer->appointments_total_ratings = $completedAppointments->count();
+            $lawyer->appointments_avg_rating = $completedAppointments->avg('rating') ?: 0;
             $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
             $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
         }
@@ -69,7 +71,14 @@ class LawyerController extends Controller
         $lawyer->appointments_total_ratings = $completedAppointments->count();
         $lawyer->appointments_avg_rating = $completedAppointments->avg('rating') ?: 0;
 
-        return view('lawyer-detail', compact('lawyer'));
+        $lawyer->user_appointment_status = null;
+
+        if (Auth::check()) {
+            $userAppointment = $lawyer->appointments->where('user_id', auth()->user()->id)->first();
+            $lawyer->user_appointment_status = $userAppointment ? $userAppointment->status : null;
+        }
+
+        return view('lawyer-detail', compact('lawyer', 'completedAppointments'));
     }
 
     public function getLawyerBookingPage($id) {

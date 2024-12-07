@@ -48,6 +48,12 @@
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
                   <li><hr class="dropdown-divider"></li>
+                  @if (Auth::guard('lawyer')->check())
+                  <li><a class="dropdown-item d-flex align-items-center" href="{{ route('lawyer.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>
+                  @else
+                  <li><a class="dropdown-item d-flex align-items-center" href="{{ route('user.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>
+                  @endif
+                  <li><hr class="dropdown-divider"></li>
                   <li>
                     {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
                     <form method="POST" action="{{ route('logout') }}">

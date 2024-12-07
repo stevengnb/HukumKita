@@ -1,0 +1,115 @@
+/* General container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styles */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Alert styles for empty appointments */
+.alert {
+    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #666;
+}
+
+/* Table styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: rgb(240, 240, 240);
+    color: #202020;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.table td {
+    font-size: 0.95rem;
+    color: #2d2d2d;
+}
+
+/* Button styles */
+.btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34;
+}
+
+/* Badge styles */
+.badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Hover effect on table rows */
+.table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .table th,
+    .table td {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}

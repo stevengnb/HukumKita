@@ -10,6 +10,10 @@ class Appointment extends Model
     /** @use HasFactory<\Database\Factories\AppointmentFactory> */
     use HasFactory;
 
+    public $incrementing = false;
+    protected $primaryKey = ['lawyer_id', 'user_id'];
+    protected $keyType = 'string';
+
     public function lawyer()
     {
         return $this->belongsTo(Lawyer::class);

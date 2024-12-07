@@ -28,19 +28,18 @@
         <div class="d-flex flex-column" style="width: 15%">
             <h3 class="align-self-end mb-1">@dollar($lawyer->rate)</h3>
 
-            @php
-                $userHasBooked = $lawyer->appointments
-                    ->where('user_id', auth()->user()->id)
-                    ->where('status', 'Pending')
-                    ->isNotEmpty();
-            @endphp
-
-            @if ($userHasBooked)
-                <button class="btn btn-dark" disabled>Pending</button>
+            @if (auth()->check())
+                @if ($lawyer->user_appointment_status === 'Pending')
+                    <button class="btn btn-warning" disabled>Pending</button>
+                @elseif ($lawyer->user_appointment_status === 'Confirmed')
+                    <button class="btn btn-success" disabled>Confirmed</button>
+                @else
+                    <a class="card mb-3" href="{{ route('getLawyerBooking', ['id' => $lawyer->id]) }}">
+                        <button class="btn btn-dark">Consult</button>
+                    </a>
+                @endif
             @else
-                <a class="card mb-3" href="{{ route('getLawyerBooking', ['id' => $lawyer->id]) }}">
-                    <button class="btn btn-dark">Consult</button>
-                </a>
+                <button class="btn btn-secondary" disabled>Not Authorized</button>
             @endif
         </div>
     </div>
@@ -60,7 +59,7 @@
                 style="font-size: 12pt">{{ $lawyer->appointments_total_ratings }} Rating(s)</span></h5>
         <div class="reviews">
             @if ($lawyer->appointments_total_ratings > 0)
-                @foreach ($lawyer->appointments as $a)
+                @foreach ($completedAppointments as $a)
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-2">
