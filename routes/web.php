@@ -17,6 +17,8 @@ Route::post('/appointments', [AppointmentController::class, 'store'])->name('app
 Route::post('/update-rating-review/{userId}/{lawyerId}', [AppointmentController::class, 'updateRatingReview'])->name('updateRatingReview');
 Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comments.delete');
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');

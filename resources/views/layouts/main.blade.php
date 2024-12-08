@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary px-5" style="position: fixed; width: 100%; top:0; z-index: 100;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#" style="width: 10%">
+          <a class="navbar-brand" href="{{ route('home') }}" style="width: 10%">
             <img src="{{ asset('LawConnect-Horizontal.png') }}" style="width: 100%" alt="">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@
 
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                  <li><a class="dropdown-item d-flex align-items-center" href="{{ route('profile') }}"><i class="bi bi-person me-2"></i>Profile</a></li>
                   <li><hr class="dropdown-divider"></li>
                   @if (Auth::guard('lawyer')->check())
                   <li><a class="dropdown-item d-flex align-items-center" href="{{ route('lawyer.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>

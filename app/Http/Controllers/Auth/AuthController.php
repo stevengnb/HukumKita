@@ -158,4 +158,13 @@ class AuthController extends Controller
 
         return redirect('login')->with('success', 'Logged out successfully!');
     }
+
+    public function profile() {
+        $role = 'User';
+        if (Auth::guard('lawyer')->check()) {
+            $role = 'Lawyer';
+        }
+
+        return view('profile', compact('role'));
+    }
 }
