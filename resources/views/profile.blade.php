@@ -15,7 +15,11 @@
             <img class="profile" src="{{Storage::url(Auth::user()->profile)}}" alt="">
         @endif
         <div class="ms-5">
-            <h2>{{ Auth::user()->name }}</h2>
+            @if (Auth::guard('lawyer')->check())
+                <h2>{{ Auth::guard('lawyer')->user()->name }}</h2>
+            @else
+                <h2>{{ Auth::user()->name }}</h2>
+            @endif
             @if (Auth::guard('lawyer')->check())
                 <h6 class="text-secondary">Lawyer</h6>
             @else
@@ -32,17 +36,29 @@
                 <div class="col-md-6 p-0">
                     <div class="mb-3">
                         <h6 class="text-secondary">Name</h6>
-                        <h6>{{ Auth::user()->name }}</h6>
+                        @if (Auth::guard('lawyer')->check())
+                            <h6>{{ Auth::guard('lawyer')->user()->name }}</h6>
+                        @else
+                            <h6>{{ Auth::user()->name }}</h6>
+                        @endif
                     </div>
 
                     <div class="mb-3">
                         <h6 class="text-secondary">Email</h6>
-                        <h6>{{ Auth::user()->email }}</h6>
+                        @if (Auth::guard('lawyer')->check())
+                            <h6>{{ Auth::guard('lawyer')->user()->email }}</h6>
+                        @else
+                            <h6>{{ Auth::user()->email }}</h6>
+                        @endif
                     </div>
 
                     <div class="mb-3">
                         <h6 class="text-secondary">Phone Number</h6>
-                        <h6>{{ Auth::user()->phoneNumber }}</h6>
+                        @if (Auth::guard('lawyer')->check())
+                            <h6>{{ Auth::guard('lawyer')->user()->phoneNumber }}</h6>
+                        @else
+                            <h6>{{ Auth::user()->phoneNumber }}</h6>
+                        @endif
                     </div>
                 </div>
 
@@ -58,12 +74,20 @@
 
                     <div class="mb-3">
                         <h6 class="text-secondary">Date of Birth</h6>
-                        <h6>{{ Auth::user()->dob }}</h6>
+                        @if (Auth::guard('lawyer')->check())
+                            <h6>{{ Auth::guard('lawyer')->user()->dob }}</h6>
+                        @else
+                            <h6>{{ Auth::user()->dob }}</h6>
+                        @endif
                     </div>
 
                     <div class="mb-3">
                         <h6 class="text-secondary">Gender</h6>
-                        <h6>{{ Auth::user()->gender }}</h6>
+                        @if (Auth::guard('lawyer')->check())
+                            <h6>{{ Auth::guard('lawyer')->user()->gender }}</h6>
+                        @else
+                            <h6>{{ Auth::user()->gender }}</h6>
+                        @endif
                     </div>
                 </div>
             </div>
