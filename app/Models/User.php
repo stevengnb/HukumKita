@@ -10,7 +10,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -51,11 +52,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function appointments() {
+    public function appointments()
+    {
         return $this->hasMany(Appointment::class);
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 }
