@@ -65,12 +65,12 @@
                             <div class="flex-fill">
                                 <label for="gender" class="form-label">Gender</label>
                                 {{-- <input name="gender" type="text" class="form-control" id="gender" placeholder="Your gender.."> --}}
-                                <div class="d-flex">
+                                <div class="d-flex btn-group">
                                     <input type="radio" class="btn-check" name="gender" id="male" value="male" autocomplete="off" required>
-                                    <label class="btn btn-outline-secondary flex-fill" style="border-top-right-radius: 0; border-bottom-right-radius: 0" for="male">Male</label>
+                                    <label class="btn btn-outline-dark" for="male">Male</label>
 
                                     <input type="radio" class="btn-check" name="gender" id="female" value="female" autocomplete="off" required>
-                                    <label class="btn btn-outline-secondary flex-fill" style="border-top-left-radius: 0; border-bottom-left-radius: 0; border-left: 0" for="female">Female</label>
+                                    <label class="btn btn-outline-dark" for="female">Female</label>
                                 </div>
                             </div>
                             <div class="flex-fill">

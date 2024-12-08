@@ -86,7 +86,7 @@ class LawyerController extends Controller
             $lawyer->user_appointment_status = $userAppointment ? $userAppointment->status : null;
         }
 
-        return view('lawyer-detail', compact('lawyer', 'completedAppointments'));
+        return view('lawyerDetail', compact('lawyer', 'completedAppointments'));
     }
 
     public function getLawyerBookingPage($id)
