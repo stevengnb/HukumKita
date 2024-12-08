@@ -20,7 +20,7 @@
 
                             <div class="card-body">
                                 <div class="py-2 px-3 rounded-pill" style="background-color: rgba(21, 57, 105, 0.15); color: rgba(21, 57, 105, 1); width: fit-content; font-size: 10pt">{{ $article->expertise->name }}</div>
-                                <h5 class="mt-3">{{$article->title}}</h5>
+                                <h5 class="mt-3 text-start">{{$article->title}}</h5>
                                 <span class="text-secondary" style="font-size: 11pt">{{Str::limit($article->description, 100)}}</span>
                             </div>
 

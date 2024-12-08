@@ -25,45 +25,65 @@
         </p>
 
         <h5 class="mt-5 mb-3">Comment(s)</h5>
-
-        <form action="{{ route('comments.store') }}" method="POST" class="form-control py-3 px-4">
-            @csrf
-            <input type="hidden" name="article_id" value="{{ $article->id }}">
-            <div class="d-flex flex-row align-items-center">
-                @if (Auth::check())
-                    <img class="rounded-circle" style="width: 40px; height: 40px; object-fit:cover" src="{{Storage::url(Auth::user()->profile)}}" alt="">
-                    <h5 class="mb-0 ms-3">{{Auth::user()->username}}</h5>
-                @endif
-            </div>
-            <textarea id="content" name="comment" class="border-0 mt-3" style="width: 100%" placeholder="Add a comment..."></textarea>
-            <button class="btn btn-dark">Comment</i></button>
-        </form>
-
-        @if ($errors->any())
-            <span class="text-danger">
-                @foreach ($errors->all() as $error)
-                    {{ $error }}
-                @endforeach
-            </span>
-        @endif
-
-        <div class="mt-4">
-            @foreach ($article->comments as $c)
-                <div class="d-flex flex-row">
-                    <img class="rounded-circle" style="width: 40px; height: 40px; object-fit:cover" src="{{Storage::url($c->user->profile)}}" alt="">
-
-                    <div class="d-flex flex-column ms-3">
-                        <div class="d-flex flex-row align-items-center">
-                            <h5 class="mb-0">{{$c->user->username}}</h5>
-                            <small class="text-secondary ms-2">{{ $c->created_at->diffForHumans() }}</small>
-                        </div>
-
-                        <p class="mt-2">{{$c->comment}}</p>
+        <div class="mb-4">
+            @if (!(Auth::guard('lawyer')->check()))
+                <form action="{{ route('comments.store') }}" method="POST" class="form-control d-flex flex-column py-3 px-4">
+                    @csrf
+                    <input type="hidden" name="article_id" value="{{ $article->id }}">
+                    <div class="d-flex flex-row align-items-center">
+                        @if (Auth::check())
+                            <img class="rounded-circle" style="width: 40px; height: 40px; object-fit:cover" src="{{Storage::url(Auth::user()->profile)}}" alt="">
+                            <h5 class="mb-0 ms-3">{{Auth::user()->username}}</h5>
+                        @endif
                     </div>
-                </div>
-                @endforeach
+                    <textarea id="content" name="comment" class="border-0 mt-3 mb-3" style="width: 100%" placeholder="Add a comment..."></textarea>
+                    <button class="btn btn-dark align-self-end" style="width: fit-content">Comment</i></button>
+                </form>
+            @endif
+
+            @if ($errors->any())
+                <span class="text-danger">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                </span>
+            @endif
         </div>
 
+
+        <div class="container-fluid d-flex flex-column gap-4">
+            @foreach ($comments as $c)
+                <div class="d-flex flex-row" style="width: 100%;">
+                    <img class="rounded-circle" style="width: 40px; height: 40px; object-fit:cover" src="{{Storage::url($c->user->profile)}}" alt="">
+
+                    <div class="d-flex flex-column ms-3" style="flex-grow: 1;"> <!-- Allow this to grow -->
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <h5 class="mb-0">{{ $c->user->username }}</h5>
+                                <small class="text-secondary ms-2">{{ $c->created_at->diffForHumans(['short' => true]) }}</small>
+                            </div>
+
+                            @if ($c->user_id == Auth::id() && !(Auth::guard('lawyer')->check()))
+                                <div class="dropdown">
+                                    <i class="bi bi-three-dots-vertical" style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <form method="POST" action="{{ route('comments.delete', ['id'=>$c->id]) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="dropdown-item d-flex align-items-center text-danger" type="submit"><i class="bi bi-trash3 me-2"></i>Delete</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
+
+                        <p class="mt-2">{{ $c->comment }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 
     <script>

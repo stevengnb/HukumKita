@@ -16,6 +16,7 @@ Route::get('/lawyers/booking/{id}', [LawyerController::class, 'getLawyerBookingP
 Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
 Route::post('/update-rating-review/{userId}/{lawyerId}', [AppointmentController::class, 'updateRatingReview'])->name('updateRatingReview');
 Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
+Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comments.delete');
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
