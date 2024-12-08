@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
 use App\Models\Expertise;
 use App\Models\Lawyer;
 use Illuminate\Http\Request;
@@ -11,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LawyerController extends Controller
 {
-    //
     public function getLawyers(Request $req)
     {
         $query = Lawyer::with('expertises');
@@ -36,11 +34,10 @@ class LawyerController extends Controller
 
         // Check if there's a search term and apply it
         if ($req->has('search') && $req->input('search') !== '') {
-            $query->where('name', 'like', '%' . $req->input('search') . '%');
+            $query->where('name', 'like', '%'.$req->input('search').'%');
         }
 
         $lawyers = $query->paginate(8);
-
 
         foreach ($lawyers as $lawyer) {
             $completedAppointments = $lawyer->appointments->filter(function ($appointment) {
@@ -63,8 +60,6 @@ class LawyerController extends Controller
 
         return view('lawyers', compact('lawyers', 'expertises'));
     }
-
-
 
     public function getLawyer($id)
     {

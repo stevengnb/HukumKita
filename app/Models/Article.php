@@ -10,22 +10,27 @@ class Article extends Model
     /** @use HasFactory<\Database\Factories\ArticleFactory> */
     use HasFactory;
 
-    // public function comments() {
-    //     return $this->hasMany(Course::class);
-    // }
+    protected $fillable = [
+        'title',
+        'description',
+        'imagePath',
+        'createDate',
+        'lawyer_id',
+        'expertise_id',
+    ];
 
-    // public function writer() {
-    //     return $this->belongsTo(Lawyer::class, id, lawyerId);
-    // }
-    public function expertise() {
+    public function expertise()
+    {
         return $this->belongsTo(Expertise::class, 'expertise_id', 'id');
     }
 
-    public function lawyer() {
+    public function lawyer()
+    {
         return $this->belongsTo(Lawyer::class, 'lawyer_id', 'id');
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class, 'article_id', 'id');
     }
 }
