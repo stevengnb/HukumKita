@@ -71,14 +71,15 @@
     <div style="margin: 8rem 12rem; padding:1px;">
         @yield('content')
     </div>
-    <footer>
+    <footer class="rounded-top-5">
         <div class="part">
             <div class="part-one-top">
                 <div class="part-in-one"><img src="{{ asset('LawConnect-Logo.png') }}" height="35px" alt="LawConnect Logo"></div>
                 <p class="part-in-two">LawConnect is a web-based platform enabling users to book legal consultations easily, access educational law articles, and connect with verified lawyers, enhancing accessibility, transparency, and public legal literacy in Indonesia.</p>
                 <div class="part-in-three">
-                    <p>More about us</p>
-                    <img src="{{ asset('arrow-right.png') }}" height="20px" alt="LawConnect Logo">
+                    <p>More About Us</p>
+                    <i class="bi bi-arrow-right d-flex"></i>
+                    {{-- <img src="{{ asset('arrow-right.png') }}" height="20px" alt="LawConnect Logo"> --}}
                 </div>
             </div>
             <div>&copy; 2024 LawConnect. All rights reserved.</div>

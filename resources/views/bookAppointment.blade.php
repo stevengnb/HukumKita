@@ -15,7 +15,7 @@
         </div>
 
         <div class="main-content">
-            <div class="lawyer-profile">
+            <div class="lawyer-profile border border-secondary-subtle rounded-5">
                 <img src="{{ Storage::url($lawyer->profile) }}" alt="Lawyer Profile Picture">
                 <h2>{{ $lawyer->name }}</h2>
                 <p><i class="bi bi-geo-alt"></i> {{ $lawyer->address }}</p>
@@ -23,8 +23,8 @@
                 <p><strong>Rate:</strong> @dollar($lawyer->rate)</p>
             </div>
 
-            <div class="booking-form">
-                <h3>Schedule Your Appointment</h3>
+            <div class="booking-form border border-secondary-subtle rounded-5">
+                <h4 class="mb-4">Schedule Your Appointment</h4>
                 <form action="{{ route('appointments.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="lawyer_id" value="{{ $lawyer->id }}">
@@ -44,7 +44,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-dark btn-lg">Book Appointment</button>
+                    <button type="submit" class="btn btn-dark btn-md">Book Appointment</button>
                 </form>
             </div>
         </div>

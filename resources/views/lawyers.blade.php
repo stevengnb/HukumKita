@@ -11,9 +11,9 @@
         <h1>Browse Lawyers that Suit Your Needs</h1>
         <div class="search-wrapper position-sticky sticky-top px-0 z-3">
             <form class="search-form d-flex" role="search" method="GET" action="{{ route('getLawyers') }}">
-                <input class="form-control me-2 rounded-4 py-2 px-3" type="search" name="search"
+                <input class="form-control me-2 rounded-pill py-2 px-3" type="search" name="search"
                     placeholder="Search Lawyer's Name" aria-label="Search" value="{{ request('search') }}">
-                <button class="btn btn-outline-success rounded-4" type="submit">Search</button>
+                <button class="btn btn-outline-success rounded-pill" type="submit">Search</button>
             </form>
         </div>
 

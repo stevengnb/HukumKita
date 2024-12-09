@@ -27,7 +27,7 @@
         <h5 class="mt-5 mb-3">Comment(s)</h5>
         <div class="mb-4">
             @if (!(Auth::guard('lawyer')->check()))
-                <form action="{{ route('comments.store') }}" method="POST" class="form-control d-flex flex-column py-3 px-4">
+                <form action="{{ route('comments.store') }}" method="POST" class="form-control d-flex flex-column py-3 px-4 rounded-4">
                     @csrf
                     <input type="hidden" name="article_id" value="{{ $article->id }}">
                     <div class="d-flex flex-row align-items-center">

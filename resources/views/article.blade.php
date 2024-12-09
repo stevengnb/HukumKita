@@ -28,12 +28,12 @@
                 <div class="modal-body">
                     <form method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">
                         @csrf
-            
+
                         <div class="mb-3">
                             <label for="title" class="form-label">Headline</label>
                             <input type="text" class="form-control" id="title" name="title" placeholder="Enter the article headline" required>
                         </div>
-                
+
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter the article description" required></textarea>
@@ -51,7 +51,7 @@
                                 <option value="6">Criminal Law</option>
                             </select>
                         </div>
-                
+
                         <div class="mb-3">
                             <label for="image" class="form-label">Banner Image</label>
                             <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
@@ -72,7 +72,7 @@
             <div class="row" style="row-gap: 2rem;">
                 @foreach ($articles as $article)
                     <div class="col-3">
-                        <a class="card h-1 00 rounded-4 overflow-hidden" style="text-align: justify; text-decoration: none; color: black;" href="/articles/{{$article->id}}">
+                        <a class="card h-100 rounded-4 overflow-hidden" style="text-align: justify; text-decoration: none; color: black;" href="/articles/{{$article->id}}">
                             <img class="card-img-top" src={{$article->imagePath}} alt="Image" style="width:100%; height:14rem;" >
 
                             <div class="card-body">

@@ -22,7 +22,7 @@
         <h3 class="text-white">What Legal Consultation Do You Need?</h3>
         <div class="cat z-1">
             @foreach ($categories as $category)
-                <div class="card p-4 rounded-4">
+                <div class="card category-card p-4 rounded-4">
                     <div class="d-flex flex-row align-items-center">
                         <img style="width: 30px; height: 30px" src="{{ asset('assets/' . $category->name . '-icon.png') }}" alt="">
                         <p class="ms-2 title">{{ $category->name }}</p>
@@ -37,12 +37,16 @@
         <h3>Latest Articles</h3>
         <div class="cat">
             @foreach ($articles as $article)
-                <div class="card rounded-4 overflow-hidden">
+                <div class="card rounded-5 overflow-hidden position-relative article-card">
                     <img class="card-img-top" src="{{ asset('art.jpg') }}" alt="LawConnect Article">
+                    <div class="position-absolute" style="bottom: 0; width: 100%; height: 70%; background-image: linear-gradient(to top, rgba(21, 57, 105, 1), rgba(0, 0, 0, 0));"></div>
 
-                    <div class="card-body p-4">
-                        <div class="py-2 px-3 rounded-pill" style="background-color: rgba(21, 57, 105, 0.15); color: rgba(21, 57, 105, 1); width: fit-content; font-size: 11pt">{{ $article->expertise->name }}</div>
-                        <p class="h5 mb-0 mt-3">{{ $article->title }}</p>
+                    <div class="card-body p-4 position-absolute d-flex flex-column justify-content-between" style="height: 100%; width: 100%">
+                        <div class="py-2 px-3 rounded-pill" style="background-color: white; color: rgba(21, 57, 105, 1); width: fit-content; font-size: 11pt">{{ $article->expertise->name }}</div>
+                        <div class="d-flex flex-row justify-content-between align-items-end w-100">
+                            <p class="h5 mb-0 text-white">{{ $article->title }}</p>
+                            <i class="bi bi-arrow-right-circle-fill align-items-center justify-content-center d-flex" style="color: white; font-size: 2rem"></i>
+                        </div>
                     </div>
 
                 </div>

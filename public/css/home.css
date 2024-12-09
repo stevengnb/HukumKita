@@ -163,7 +163,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.card:hover {
+.category-card:hover {
     cursor: pointer;
     transform: translateY(-5px);
     background-color: #eeeeee;
@@ -207,4 +207,26 @@
     top: 0;
     left: 0;
     z-index: 100;
+}
+
+.article-card .bi-arrow-right-circle-fill{
+    transition: transform 300ms ease-in-out;
+}
+
+.article-card img{
+    transition: transform 300ms ease-in-out;
+}
+
+.article-card:hover{
+    cursor: pointer;
+}
+
+.article-card:hover img{
+    transform: scale(1.05);
+}
+
+.article-card:hover .bi-arrow-right-circle-fill{
+    transform: rotate(-45deg);
+
+    /* transition: transform 200ms ease-in-out; */
 }
