@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LawyerController extends Controller
 {
-    public function getLawyers(Request $req)
-    {
+    public function getLawyers(Request $req) {
         $query = Lawyer::with('expertises');
 
         if ($req->has('price_range') && $req->input('price_range') !== '') {
@@ -58,8 +57,7 @@ class LawyerController extends Controller
         return view('lawyers', compact('lawyers', 'expertises'));
     }
 
-    public function getLawyer($id)
-    {
+    public function getLawyer($id) {
         $lawyer = Lawyer::with(['expertises', 'appointments'])->find($id);
         $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
         $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);
@@ -81,8 +79,7 @@ class LawyerController extends Controller
         return view('lawyerDetail', compact('lawyer', 'completedAppointments'));
     }
 
-    public function getLawyerBookingPage($id)
-    {
+    public function getLawyerBookingPage($id) {
         $lawyer = Lawyer::with(['expertises', 'appointments'])->find($id);
         $lawyer->expertise_names = $lawyer->expertises->pluck('name')->toArray();
         $lawyer->exp_years = number_format(abs(Carbon::now()->diffInYears($lawyer->experience)), 0);

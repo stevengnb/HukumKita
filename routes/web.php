@@ -37,7 +37,8 @@ Route::prefix('lawyer')->name('lawyer.')->group(function () {
     Route::post('login-process', [AuthController::class, 'loginProcessLawyer'])->name('login.process');
     Route::post('register-process', [AuthController::class, 'registerProcessLawyer'])->name('register.process');
 });
-
+Route::delete('/lawyer/delete-lawyer', [AuthController::class, 'deleteLawyer'])->name('lawyer.deleteAccount');
+Route::delete('/lawyer/delete-user', [AuthController::class, 'deleteUser'])->name('user.deleteAccount');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 

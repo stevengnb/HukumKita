@@ -167,4 +167,21 @@ class AuthController extends Controller
 
         return view('profile', compact('role'));
     }
+
+    public function deleteLawyer(Request $request) {
+        $lawyer = Auth::guard('lawyer')->user();
+        $lawyer->delete();
+
+        Auth::guard('lawyer')->logout();
+
+        return redirect('/')->with('success', 'Your account has been deleted.');
+    }
+
+    public function deleteUser(Request $request) {
+        $user = Auth::user();
+        $user->delete();
+        Session::flush();
+
+        return redirect('/')->with('success', 'Your account has been deleted.');
+    }
 }

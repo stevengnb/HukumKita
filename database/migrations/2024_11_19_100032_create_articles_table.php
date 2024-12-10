@@ -19,9 +19,9 @@ return new class extends Migration
             $table->date('createDate');
             $table->string('imagePath');
             $table->unsignedBigInteger('lawyer_id');
-            $table->foreign('lawyer_id')->on('lawyers')->references('id');
+            $table->foreign('lawyer_id')->on('lawyers')->references('id')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('expertise_id');
-            $table->foreign('expertise_id')->on('lawyers')->references('id');
+            $table->foreign('expertise_id')->on('lawyers')->references('id')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

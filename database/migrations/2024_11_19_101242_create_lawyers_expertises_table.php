@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('lawyer_id');
             $table->unsignedBigInteger(column: 'expertise_id');
             $table->primary(['lawyer_id', 'expertise_id']);
-            $table->foreign('lawyer_id')->references('id')->on('lawyers');
-            $table->foreign('expertise_id')->references('id')->on('expertises');
+            $table->foreign('lawyer_id')->references('id')->on('lawyers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('expertise_id')->references('id')->on('expertises')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

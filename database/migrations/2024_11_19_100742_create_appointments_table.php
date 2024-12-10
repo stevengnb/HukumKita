@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('lawyer_id');
             $table->unsignedBigInteger(column: 'user_id');
             $table->primary(['lawyer_id', 'user_id']);
-            $table->foreign('lawyer_id')->references('id')->on('lawyers');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('lawyer_id')->references('id')->on('lawyers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->datetime('dateTime');
             $table->string('address');
             $table->decimal('rating')->nullable();
