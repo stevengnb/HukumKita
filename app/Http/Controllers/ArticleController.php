@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
-    public function showArticles()
+    public function showArticles(Request $request)
     {
-        $articles = Article::paginate(8);
+        $query = Article::query();
+
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        $articles = $query->paginate(8);
 
         return view('article', compact('articles'));
     }
@@ -42,7 +48,7 @@ class ArticleController extends Controller
 
     public function showDetail($id)
     {
-        $article = Article::with(['lawyer', 'comments.user'])->findOrFail($id);
+        $article = Article::with(['lawyer', 'comments.user', 'expertise'])->findOrFail($id);
 
         $userComments = collect();
         $otherComments = $article->comments;

@@ -35,7 +35,7 @@
 } */
 
 .filter-form{
-    top:160px;
+    top: 155px;
     margin-top: 12px;
 }
 
@@ -51,8 +51,8 @@
 
 .search-wrapper{
     background-color: white;
-    padding: 20px 0 10px 0;
-    top: 80px;
+    padding: 20px 0 20px 0;
+    top: 70px;
 }
 
 form{

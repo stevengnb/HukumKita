@@ -43,7 +43,7 @@
                             <td>{{ \Carbon\Carbon::parse($appointment->dateTime)->format('F j, Y g:i A') }}</td>
                             <td>
                                 <span
-                                    class="badge bg-{{ $appointment->status === 'completed' ? 'success' : ($appointment->status === 'pending' ? 'warning' : 'primary') }}">
+                                    class="badge bg-{{ $appointment->status === 'Completed' ? 'success' : ($appointment->status === 'Pending' ? 'warning' : 'primary') }} fw-normal px-3 rounded-pill py-2">
                                     {{ ucfirst($appointment->status) }}
                                 </span>
                             </td>

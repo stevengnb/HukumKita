@@ -26,7 +26,7 @@ class ArticleSeeder extends Seeder
                 'title' => $faker->sentence,
                 'description' => $faker->text,
                 'createDate' => $faker->dateTimeBetween('-1 years', 'now'),
-                'imagePath' => 'images/law-article.jpg',
+                'imagePath' => 'articles/law-article.jpg',
                 'lawyer_id' => $faker->randomElement($lawyersId),
                 'expertise_id' => $faker->randomElement($categoryId),
             ]);

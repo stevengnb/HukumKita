@@ -15,57 +15,52 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary px-5" style="position: fixed; width: 100%; top:0; z-index: 100;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{{ route('home') }}" style="width: 10%">
-            <img src="{{ asset('LawConnect-Horizontal.png') }}" style="width: 100%" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('getLawyers') }}">Lawyers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/articles">Articles</a>
-              </li>
-            </ul>
+        <div class="container-fluid position-relative">
+            <a class="navbar-brand m-0 position-absolute" href="{{ route('home') }}" style="left: 0; width: 10%">
+                <img src="{{ asset('LawConnect-Horizontal.png') }}" style="width: 100%" alt="">
+            </a>
 
-            <div class="dropdown d-flex">
-                <a class="profile-img" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    @if (Auth::guard('lawyer')->check())
-                    <img src="{{Storage::url(Auth::guard('lawyer')->user()->profile)}}" alt="">
-
-                    @else
-                    <img src="{{Storage::url(Auth::user()->profile)}}" alt="">
-                    @endif
-
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item d-flex align-items-center" href="{{ route('profile') }}"><i class="bi bi-person me-2"></i>Profile</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  @if (Auth::guard('lawyer')->check())
-                  <li><a class="dropdown-item d-flex align-items-center" href="{{ route('lawyer.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>
-                  @else
-                  <li><a class="dropdown-item d-flex align-items-center" href="{{ route('user.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>
-                  @endif
-                  <li><hr class="dropdown-divider"></li>
-                  <li>
-                    {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <div class="d-grid">
-                            <button class="dropdown-item d-flex align-items-center" type="submit"><i class="bi bi-box-arrow-right me-2 d-flex"></i>Logout</button>
-                        </div>
-                    </form>
+            <div class="collapse navbar-collapse d-flex justify-content-center py-2" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('getLawyers') }}">Lawyers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/articles">Articles</a>
                     </li>
                 </ul>
             </div>
-          </div>
+
+            <div class="dropdown position-absolute" style="right: 0;">
+                <a class="profile-img" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @if (Auth::guard('lawyer')->check())
+                        <img src="{{ Storage::url(Auth::guard('lawyer')->user()->profile) }}" alt="">
+                    @else
+                        <img src="{{ Storage::url(Auth::user()->profile) }}" alt="">
+                    @endif
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('profile') }}"><i class="bi bi-person me-2"></i>Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    @if (Auth::guard('lawyer')->check())
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('lawyer.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>
+                    @else
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('user.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>
+                    @endif
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <div class="d-grid">
+                                <button class="dropdown-item d-flex align-items-center" type="submit"><i class="bi bi-box-arrow-right me-2"></i>Logout</button>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <div style="margin: 8rem 12rem; padding:1px;">

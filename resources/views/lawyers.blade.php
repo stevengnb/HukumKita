@@ -13,7 +13,9 @@
             <form class="search-form d-flex" role="search" method="GET" action="{{ route('getLawyers') }}">
                 <input class="form-control me-2 rounded-pill py-2 px-3" type="search" name="search"
                     placeholder="Search Lawyer's Name" aria-label="Search" value="{{ request('search') }}">
-                <button class="btn btn-outline-success rounded-pill" type="submit">Search</button>
+                <button class="btn btn-dark rounded-pill" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
             </form>
         </div>
 
@@ -83,7 +85,7 @@
                                             <!-- Cek appointment status dan display button bsd status -->
                                             @if (auth()->check())
                                                 @if ($l->user_appointment_status === 'Pending')
-                                                    <button class="btn btn-warning">Pending</button>
+                                                    <button class="btn btn-warning" style="color: #6B450E;">Pending</button>
                                                 @elseif ($l->user_appointment_status === 'Confirmed')
                                                     <button class="btn btn-success">Confirmed</button>
                                                 @elseif ($l->user_appointment_status === 'Completed')

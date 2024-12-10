@@ -22,13 +22,13 @@
         <h3 class="text-white">What Legal Consultation Do You Need?</h3>
         <div class="cat z-1">
             @foreach ($categories as $category)
-                <div class="card category-card p-4 rounded-4">
+                <a class="card category-card p-4 rounded-4 text-decoration-none" href="{{ route('getLawyers', ['expertise' => $category->id]) }}" >
                     <div class="d-flex flex-row align-items-center">
                         <img style="width: 30px; height: 30px" src="{{ asset('assets/' . $category->name . '-icon.png') }}" alt="">
                         <p class="ms-2 title">{{ $category->name }}</p>
                     </div>
                     <p class="description fs-6 mt-2">{{ $category->description }}</p>
-                </div>
+                </a>
             @endforeach
         </div>
         <img class="position-absolute bottom-0 end-0" style="width: 100%" src="{{ asset('assets/shape-wave-home.webp') }}" alt="">

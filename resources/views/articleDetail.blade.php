@@ -8,8 +8,12 @@
 
 @section('content')
     <div style="display: flex; flex-direction: column;">
-        <img class="rounded-5" src={{asset($article->imagePath)}} alt="Image" style="width:100%; height:48rem;" >
-        <h1 class="mt-5 mb-3">{{$article->title}}</h1>
+
+        <div class="d-flex align-items-center mt-5 mb-5 flex-column">
+            <h1 class="text-center mb-3" style="width: 60%">{{$article->title}}</h1>
+            <div class="py-2 px-3 rounded-pill" style="background-color: rgba(21, 57, 105, 0.15); color: rgba(21, 57, 105, 1); width: fit-content; font-size: 12pt">{{ $article->expertise->name }}</div>
+        </div>
+        <img class="rounded-5 mb-4" src={{Storage::url($article->imagePath)}} alt="Image" style="width:100%; height:40rem; object-fit: cover;" >
         <div class="d-flex flex-row align-items-center">
             <a class="d-flex flex-row align-items-center underline text-black" href="{{ route('getLawyer', ['id'=> $article->lawyer_id]) }}">
                 <img class="rounded-circle me-3" style="width: 35px; height: 35px; object-fit: cover" src="{{Storage::url($article->lawyer->profile)}}" alt="">
@@ -19,6 +23,8 @@
             <i class="bi bi-circle-fill mx-3" style="font-size: 0.25rem;"></i>
             <h6 class="mb-0">{{\Carbon\Carbon::parse($article->createDate)->translatedFormat('l, j F Y')}}</h6>
         </div>
+
+
 
         <p class="mt-5">
             {{$article->description}}

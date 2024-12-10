@@ -3,17 +3,32 @@
 @section('title', 'Law Articles')
 
 @section('content')
-    <div style="width: max;">
-        <div style="display: flex; flex-direction: row; margin-bottom: 2rem; gap:1rem; height:3rem;">
-            <input class="form-control mr-sm-2" style="" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" style="" type="submit">Search</button>
+    <div style="width: 100%;">
+        <div class="position-sticky sticky-top px-0 z-3" style="top: 60px; display: flex; flex-direction: row; margin-bottom: 2rem; background-color: white; padding: 40px 0 20px 0;">
+            <form method="GET" action="{{ route('showArticles') }}" role="search" class="d-flex" style="width: 100%;">
+                <input
+                    class="form-control me-2 rounded-pill py-2 px-3"
+                    type="search"
+                    name="search"
+                    value="{{ request('search') }}"
+                    placeholder="Search"
+                    aria-label="Search">
+                <button
+                    class="btn btn-dark rounded-pill"
+                    type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
 
             @if(Auth::guard('lawyer')->check())
-                <button class="btn btn-outline-success my-2 my-sm-0" style="" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Create</button>
-            @else
-                <div>
-                    <h1>Not a lawyer</h1>
-                </div>
+                <button
+                    class="btn btn-dark rounded-pill ms-2 d-flex flex-row align-items-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    <i class="bi bi-pencil-square d-flex me-1"></i>
+                    <span>Create</span>
+                </button>
             @endif
         </div>
 
@@ -73,7 +88,7 @@
                 @foreach ($articles as $article)
                     <div class="col-3">
                         <a class="card h-100 rounded-4 overflow-hidden" style="text-align: justify; text-decoration: none; color: black;" href="/articles/{{$article->id}}">
-                            <img class="card-img-top" src={{$article->imagePath}} alt="Image" style="width:100%; height:14rem;" >
+                            <img class="card-img-top" src={{Storage::url($article->imagePath)}} alt="Image" style="width:100%; height:14rem;" >
 
                             <div class="card-body">
                                 <div class="py-2 px-3 rounded-pill" style="background-color: rgba(21, 57, 105, 0.15); color: rgba(21, 57, 105, 1); width: fit-content; font-size: 10pt">{{ $article->expertise->name }}</div>
@@ -87,5 +102,5 @@
             </div>
         </section>
     </div>
-    {{ $articles->links('pagination::bootstrap-5') }}
+    {{ $articles->appends(request()->query())->links('pagination::bootstrap-5') }}
 @endsection

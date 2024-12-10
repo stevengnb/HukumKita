@@ -7,44 +7,48 @@
 @endsection
 
 @section('content')
-    <div class="d-flex justify-content-between">
-        <div class="d-flex flex-row gap-5 mb-5">
-            <img class="lawyer-img rounded-3" src={{ Storage::url($lawyer->profile) }}>
+    <div class="d-flex justify-content-between align-items-stretch mb-5">
+        <div class="d-flex align-items-stretch">
+            <img
+                class="lawyer-img rounded-5"
+                src="{{ Storage::url($lawyer->profile) }}"
+                style="object-fit: cover; width: 200px; height: 100%;">
+        </div>
 
-            <div class="d-flex flex-column gap-2">
+        <div class="card d-flex flex-row flex-grow-1 ms-4 rounded-5 p-5">
+            <div class="d-flex flex-column gap-2" style="flex: 1;">
                 <h1>{{ $lawyer->name }}</h1>
                 <h5 class="card-text"><i class="bi bi-calendar me-2"></i>{{ $lawyer->exp_years }} Year(s) of Experience</h5>
-                {{-- <div class="mx-3 divider-vertical"></div> --}}
                 <div>
                     <i class="bi bi-star-fill" style="color: #FEAF27;"></i>
                     {{ $lawyer->appointments_avg_rating }} <span class="text-secondary" style="font-size: 9pt">/5</span>
                     <span class="text-secondary fs-6 ms-2">{{ $lawyer->appointments_total_ratings }} Rating(s)</span>
                 </div>
-
                 <div><i class="bi bi-geo-alt me-1"></i>{{ $lawyer->address }}</div>
             </div>
-        </div>
 
-        <div class="d-flex flex-column" style="width: 15%">
-            <h3 class="align-self-end mb-1">@dollar($lawyer->rate)</h3>
-
-            @if (auth()->check())
-                @if ($lawyer->user_appointment_status === 'Pending')
-                    <button class="btn btn-warning" disabled>Pending</button>
-                @elseif ($lawyer->user_appointment_status === 'Confirmed')
-                    <button class="btn btn-success" disabled>Confirmed</button>
-                @elseif ($lawyer->user_appointment_status === 'Completed')
-                    <button class="btn btn-dark" disabled>Already Consulted</button>
+            <div class="d-flex flex-column">
+                <h3 class="align-self-end mb-1">@dollar($lawyer->rate)</h3>
+                @if (auth()->check())
+                    @if ($lawyer->user_appointment_status === 'Pending')
+                        <button class="btn btn-warning" disabled>Pending</button>
+                    @elseif ($lawyer->user_appointment_status === 'Confirmed')
+                        <button class="btn btn-success" disabled>Confirmed</button>
+                    @elseif ($lawyer->user_appointment_status === 'Completed')
+                        <button class="btn btn-dark" disabled>Already Consulted</button>
+                    @else
+                        <a href="{{ route('getLawyerBooking', ['id' => $lawyer->id]) }}">
+                            <button class="btn btn-dark">Consult</button>
+                        </a>
+                    @endif
                 @else
-                    <a class="card mb-3" href="{{ route('getLawyerBooking', ['id' => $lawyer->id]) }}">
-                        <button class="btn btn-dark">Consult</button>
-                    </a>
+                    <button class="btn btn-secondary" disabled>Not Authorized</button>
                 @endif
-            @else
-                <button class="btn btn-secondary" disabled>Not Authorized</button>
-            @endif
+            </div>
         </div>
     </div>
+
+
 
     <div>
         <h5 class="fw-bold">Expertise</h5>

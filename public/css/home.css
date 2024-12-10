@@ -12,7 +12,7 @@
     position: absolute;
     z-index: -1;
     /* opacity: 1; */
-    filter: brightness(70%) blur(3px);
+    filter: brightness(70%);
 }
 
 .article {
