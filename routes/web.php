@@ -19,6 +19,8 @@ Route::post('/update-rating-review/{userId}/{lawyerId}', [AppointmentController:
 Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comments.delete');
 Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+Route::get('lawyer/myappointments', [AppointmentController::class, 'getLawyerAppointments'])->name('lawyer.appointments');
+Route::put('lawyer/myappointments/{userId}/{lawyerId}/{newStatus}', [AppointmentController::class, 'updateAppointmentStatus'])->name('updateAppointmentStatus');
 
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -27,11 +29,6 @@ Route::post('login-process', [AuthController::class, 'loginProcess'])->name('log
 Route::post('register-process', [AuthController::class, 'registerProcess'])->name('register.process');
 Route::get('lawyers', [LawyerController::class, 'getLawyers'])->name('getLawyers');
 Route::get('myappointments', [AppointmentController::class, 'getUserAppointments'])->name('user.appointments');
-// Route::get('lawyer/{id}', [LawyerController::class, 'getLawyer'])->name('getLawyer');
-
-// lawyer routes
-Route::get('lawyer/myappointments', [AppointmentController::class, 'getLawyerAppointments'])->name('lawyer.appointments');
-Route::put('lawyer/myappointments/{userId}/{lawyerId}/{newStatus}', [AppointmentController::class, 'updateAppointmentStatus'])->name('updateAppointmentStatus');
 
 // lawyer auth
 Route::prefix('lawyer')->name('lawyer.')->group(function () {
@@ -42,3 +39,6 @@ Route::prefix('lawyer')->name('lawyer.')->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+// Route::get('lawyer/{id}', [LawyerController::class, 'getLawyer'])->name('getLawyer');
