@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home'])->middleware('auth:web,lawyer')->name('home');
 Route::get('/articles', [ArticleController::class, 'showArticles']);
 Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
-Route::get('/articles/{id}', [ArticleController::class, 'showDetail']);
+Route::get('/articles/{id}', [ArticleController::class, 'showDetail'])->name('showArticleDetail');
 Route::get('/lawyers/{id}', [LawyerController::class, 'getLawyer'])->name('getLawyer');
 Route::get('/lawyers/booking/{id}', [LawyerController::class, 'getLawyerBookingPage'])->name('getLawyerBooking');
 Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');

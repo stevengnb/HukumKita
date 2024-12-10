@@ -37,7 +37,7 @@
         <h3>Latest Articles</h3>
         <div class="cat">
             @foreach ($articles as $article)
-                <div class="card rounded-5 overflow-hidden position-relative article-card">
+                <a class="card rounded-5 overflow-hidden position-relative article-card" href="{{ route('showArticleDetail', ['id'=>$article->id]) }}">
                     <img class="card-img-top" src="{{ asset('art.jpg') }}" alt="LawConnect Article">
                     <div class="position-absolute" style="bottom: 0; width: 100%; height: 70%; background-image: linear-gradient(to top, rgba(21, 57, 105, 1), rgba(0, 0, 0, 0));"></div>
 
@@ -49,7 +49,7 @@
                         </div>
                     </div>
 
-                </div>
+                </a>
             @endforeach
         </div>
     </div>
