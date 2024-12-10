@@ -14,7 +14,6 @@ class LawyerController extends Controller
     {
         $query = Lawyer::with('expertises');
 
-        // Check if price_range is set and apply the filter
         if ($req->has('price_range') && $req->input('price_range') !== '') {
             if ($req->input('price_range') == '1-3') {
                 $query->whereBetween('rate', [1, 3]);
@@ -23,7 +22,6 @@ class LawyerController extends Controller
             }
         }
 
-        // Check if expertise is set and apply the filter
         if ($req->has('expertise')) {
             if (!($req->input('expertise') == '')) {
                 $query->whereHas('expertises', function ($q) use ($req) {
@@ -32,7 +30,6 @@ class LawyerController extends Controller
             }
         }
 
-        // Check if there's a search term and apply it
         if ($req->has('search') && $req->input('search') !== '') {
             $query->where('name', 'like', '%'.$req->input('search').'%');
         }
