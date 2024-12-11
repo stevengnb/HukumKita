@@ -184,4 +184,40 @@ class AuthController extends Controller
 
         return redirect('/')->with('success', 'Your account has been deleted.');
     }
+
+    public function changePasswordUser(Request $request) {
+        $validated = $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6|confirmed'
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Password changed successfully.');
+    }
+
+    public function changePasswordLawyer(Request $request) {
+        $validated = $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6|confirmed'
+        ]);
+
+        $lawyer = Auth::guard('lawyer')->user();
+
+        if (!Hash::check($request->current_password, $lawyer->password)) {
+            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        $lawyer->password = Hash::make($request->new_password);
+        $lawyer->save();
+
+        return back()->with('success', 'Password changed successfully.');
+    }
 }

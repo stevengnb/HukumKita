@@ -30,27 +30,82 @@
         </div>
 
         <div class="d-flex flex-column gap-3">
-            <button class="btn btn-dark"><i class="bi bi-key me-2"></i>Change Password</button>
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#changePasswordModal"><i class="bi bi-key me-2"></i>Change Password</button>
             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal"><i class="bi bi-trash3 me-2"></i>Delete Account</button>
         </div>
 
         <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-5 p-4">
+                    <div class="modal-header" style="border: none;">
                         <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Account Deletion</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete your account? This action cannot be undone.
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" style="border: none;">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <form method="POST" action="{{ Auth::guard('lawyer')->check() ? route('lawyer.deleteAccount') : route('user.deleteAccount') }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete Account</button>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-5 p-4">
+                    <div class="modal-header" style="border: none;">
+                        <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ Auth::guard('lawyer')->check() ? route('lawyer.changePassword') : route('changePassword') }}"  method="POST" class="d-flex gap-3 flex-column">
+                        <div class="modal-body d-flex flex-column gap-3">
+                                @csrf
+                                <div class="d-flex flex-column">
+                                    <label for="currentPassword">Current Password</label>
+                                    <input class="form-control @error('current_password') is-invalid @enderror" type="password" name="current_password" id="current_password" required>
+                                    @error('current_password')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="d-flex flex-column">
+                                    <label for="newPassword">New Password</label>
+                                    <input class="form-control" type="password" name="new_password" id="new_password" required>
+                                </div>
+
+                                <div class="d-flex flex-column">
+                                    <label for="confirmPassword">Confirm Password</label>
+                                    <input class="form-control" type="password" name="new_password_confirmation" id="new_password_confirmation" required>
+                                </div>
+                        </div>
+
+                        <div class="modal-footer" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-dark">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-5 p-4">
+                    <div class="modal-header" style="border: none;">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex flex-column align-items-center justify-content-center">
+                        <i class="bi bi-check-lg text-success mb-3" style="font-size: 64pt"></i>
+                        Your password has been changed successfully!
+                    </div>
+                    <div class="modal-footer" style="border: none;">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">OK</button>
                     </div>
                 </div>
             </div>
@@ -142,3 +197,21 @@
     </div>
     @endif
 @endsection
+
+@if ($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var myModal = new bootstrap.Modal(document.getElementById('changePasswordModal'));
+            myModal.show();
+        });
+    </script>
+@endif
+
+@if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+        });
+    </script>
+@endif

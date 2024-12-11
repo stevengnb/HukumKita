@@ -29,13 +29,14 @@ Route::post('login-process', [AuthController::class, 'loginProcess'])->name('log
 Route::post('register-process', [AuthController::class, 'registerProcess'])->name('register.process');
 Route::get('lawyers', [LawyerController::class, 'getLawyers'])->name('getLawyers');
 Route::get('myappointments', [AppointmentController::class, 'getUserAppointments'])->name('user.appointments');
-
+Route::post('/changePassword', [AuthController::class, 'changePasswordUser'])->name('changePassword');
 // lawyer auth
 Route::prefix('lawyer')->name('lawyer.')->group(function () {
     Route::get('login', [AuthController::class, 'loginLawyer'])->name('login');
     Route::get('register', [AuthController::class, 'registerLawyer'])->name('register');
     Route::post('login-process', [AuthController::class, 'loginProcessLawyer'])->name('login.process');
     Route::post('register-process', [AuthController::class, 'registerProcessLawyer'])->name('register.process');
+    Route::post('changePassword', [AuthController::class, 'changePasswordLawyer'])->name('changePassword');
 });
 Route::delete('/lawyer/delete-lawyer', [AuthController::class, 'deleteLawyer'])->name('lawyer.deleteAccount');
 Route::delete('/lawyer/delete-user', [AuthController::class, 'deleteUser'])->name('user.deleteAccount');
