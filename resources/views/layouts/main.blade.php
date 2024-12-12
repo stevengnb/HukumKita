@@ -23,44 +23,58 @@
             <div class="collapse navbar-collapse d-flex justify-content-center py-2" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">@lang('texts.home')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('getLawyers') }}">Lawyers</a>
+                        <a class="nav-link" href="{{ route('getLawyers') }}">@lang('texts.lawyers')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/articles">Articles</a>
+                        <a class="nav-link" href="/articles">@lang('texts.articles')</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="dropdown position-absolute" style="right: 0;">
-                <a class="profile-img" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    @if (Auth::guard('lawyer')->check())
-                        <img src="{{ Storage::url(Auth::guard('lawyer')->user()->profile) }}" alt="">
-                    @else
-                        <img src="{{ Storage::url(Auth::user()->profile) }}" alt="">
-                    @endif
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('profile') }}"><i class="bi bi-person me-2"></i>Profile</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    @if (Auth::guard('lawyer')->check())
-                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('lawyer.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>
-                    @else
-                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('user.appointments') }}"><i class="bi bi-person me-2"></i>My Appointments</a></li>
-                    @endif
-                    <li><hr class="dropdown-divider"></li>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <div class="d-grid">
-                                <button class="dropdown-item d-flex align-items-center" type="submit"><i class="bi bi-box-arrow-right me-2"></i>Logout</button>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
+            <div class="position-absolute d-flex flex-row align-items-center" style="right: 0;">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle me-4" style="text-decoration: none;" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @lang('texts.language')
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="{{ route('changeLang', ['lang'=>'en']) }}">@lang('texts.english')</a></li>
+                        <li><a class="dropdown-item" href="{{ route('changeLang', ['lang'=>'id']) }}">@lang('texts.indo')</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a class="profile-img" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @if (Auth::guard('lawyer')->check())
+                            <img src="{{ Storage::url(Auth::guard('lawyer')->user()->profile) }}" alt="">
+                        @else
+                            <img src="{{ Storage::url(Auth::user()->profile) }}" alt="">
+                        @endif
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{ route('profile') }}"><i class="bi bi-person me-2"></i>@lang('texts.dropdown.profile')</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        @if (Auth::guard('lawyer')->check())
+                            <li><a class="dropdown-item d-flex align-items-center" href="{{ route('lawyer.appointments') }}"><i class="bi bi-person me-2"></i>@lang('texts.dropdown.my-appointments')</a></li>
+                        @else
+                            <li><a class="dropdown-item d-flex align-items-center" href="{{ route('user.appointments') }}"><i class="bi bi-person me-2"></i>@lang('texts.dropdown.my-appointments')</a></li>
+                        @endif
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <div class="d-grid">
+                                    <button class="dropdown-item d-flex align-items-center" type="submit"><i class="bi bi-box-arrow-right me-2"></i>@lang('texts.dropdown.logout')</button>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
+
         </div>
     </nav>
     <div style="margin: 8rem 12rem; padding:1px;">
@@ -70,9 +84,9 @@
         <div class="part">
             <div class="part-one-top">
                 <div class="part-in-one"><img src="{{ asset('LawConnect-Logo.png') }}" height="35px" alt="LawConnect Logo"></div>
-                <p class="part-in-two">LawConnect is a web-based platform enabling users to book legal consultations easily, access educational law articles, and connect with verified lawyers, enhancing accessibility, transparency, and public legal literacy in Indonesia.</p>
+                <p class="part-in-two">@lang('texts.footer.desc')</p>
                 <div class="part-in-three">
-                    <p>More About Us</p>
+                    <p>@lang('texts.footer.more')</p>
                     <i class="bi bi-arrow-right d-flex"></i>
                     {{-- <img src="{{ asset('arrow-right.png') }}" height="20px" alt="LawConnect Logo"> --}}
                 </div>
@@ -82,31 +96,31 @@
         <div class="part">
             <div class="part-two-top">
                 <div class="part-component">
-                    <p>Features</p>
+                    <p>@lang('texts.footer.features.title')</p>
                     <div class="part-component-body">
-                        <p>Book a lawyer</p>
-                        <p>Legal Resources</p>
-                        <p>Articles</p>
+                        <p>@lang('texts.footer.features.book')</p>
+                        <p>@lang('texts.footer.features.res')</p>
+                        <p>@lang('texts.articles')</p>
                     </div>
                 </div>
                 <div class="part-component">
-                    <p>More</p>
+                    <p>@lang('texts.footer.others.title')</p>
                     <div class="part-component-body">
-                        <p>Help Center</p>
-                        <p>Contact House</p>
-                        <p>Feedback</p>
+                        <p>@lang('texts.footer.others.help')</p>
+                        <p>@lang('texts.footer.others.contact')</p>
+                        <p>@lang('texts.footer.others.feedback')</p>
                     </div>
                 </div>
                 <div class="part-component">
-                    <p>Legal</p>
+                    <p>@lang('texts.footer.legal.title')</p>
                     <div class="part-component-body">
-                        <p>Privacy</p>
-                        <p>Terms</p>
-                        <p>Refunds</p>
+                        <p>@lang('texts.footer.legal.privacy')</p>
+                        <p>@lang('texts.footer.legal.terms')</p>
+                        <p>@lang('texts.footer.legal.refunds')</p>
                     </div>
                 </div>
             </div>
-            <div>Made by Carissa, Hans, Nathan, Steven, Yoseftian</div>
+            <div>@lang('texts.footer.creds')</div>
         </div>
     </footer>
     {{-- Bootstrap JS Below --}}

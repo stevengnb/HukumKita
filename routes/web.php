@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LawyerController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comm
 Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 Route::get('lawyer/myappointments', [AppointmentController::class, 'getLawyerAppointments'])->name('lawyer.appointments');
 Route::put('lawyer/myappointments/{userId}/{lawyerId}/{newStatus}', [AppointmentController::class, 'updateAppointmentStatus'])->name('updateAppointmentStatus');
+Route::get('locale/{lang}', [LanguageController::class, 'change'])->name('changeLang');
 
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');

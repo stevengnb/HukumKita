@@ -18,11 +18,11 @@
         <div class="card d-flex flex-row flex-grow-1 ms-4 rounded-5 p-5">
             <div class="d-flex flex-column gap-2" style="flex: 1;">
                 <h1>{{ $lawyer->name }}</h1>
-                <h5 class="card-text"><i class="bi bi-calendar me-2"></i>{{ $lawyer->exp_years }} Year(s) of Experience</h5>
+                <h5 class="card-text"><i class="bi bi-calendar me-2"></i>{{ $lawyer->exp_years }} @lang('texts.lawyers-page.lawyer-card.exp')</h5>
                 <div>
                     <i class="bi bi-star-fill" style="color: #FEAF27;"></i>
                     {{ $lawyer->appointments_avg_rating }} <span class="text-secondary" style="font-size: 9pt">/5</span>
-                    <span class="text-secondary fs-6 ms-2">{{ $lawyer->appointments_total_ratings }} Rating(s)</span>
+                    <span class="text-secondary fs-6 ms-2">{{ $lawyer->appointments_total_ratings }} @lang('texts.lawyers-page.lawyer-card.rating')</span>
                 </div>
                 <div><i class="bi bi-geo-alt me-1"></i>{{ $lawyer->address }}</div>
             </div>
@@ -31,18 +31,18 @@
                 <h3 class="align-self-end mb-1">@dollar($lawyer->rate)</h3>
                 @if (auth()->check())
                     @if ($lawyer->user_appointment_status === 'Pending')
-                        <button class="btn btn-warning" disabled>Pending</button>
+                        <button class="btn btn-warning" style="color: #6B450E;">@lang('texts.lawyers-page.lawyer-card.btn-pending')</button>
                     @elseif ($lawyer->user_appointment_status === 'Confirmed')
-                        <button class="btn btn-success" disabled>Confirmed</button>
+                        <button class="btn btn-success">@lang('texts.lawyers-page.lawyer-card.btn-confirmed')</button>
                     @elseif ($lawyer->user_appointment_status === 'Completed')
-                        <button class="btn btn-dark" disabled>Already Consulted</button>
+                        <button class="btn btn-dark">@lang('texts.lawyers-page.lawyer-card.btn-done')</button>
                     @else
-                        <a href="{{ route('getLawyerBooking', ['id' => $lawyer->id]) }}">
-                            <button class="btn btn-dark">Consult</button>
+                        <a class="card mb-3" href="{{ route('getLawyerBooking', ['id' => $lawyer->id]) }}">
+                            <button class="btn btn-dark">@lang('texts.lawyers-page.lawyer-card.btn')</button>
                         </a>
                     @endif
                 @else
-                    <button class="btn btn-secondary" disabled>Not Authorized</button>
+                    <button class="btn btn-secondary" disabled>@lang('texts.lawyers-page.lawyer-card.btn-notauth')</button>
                 @endif
             </div>
         </div>
@@ -51,26 +51,26 @@
 
 
     <div>
-        <h5 class="fw-bold">Expertise</h5>
+        <h5 class="fw-bold">@lang('texts.lawyers-page.filter.expertise')</h5>
         <div class="d-flex flex-wrap gap-2 mt-2">
             @foreach ($lawyer->expertise_names as $e)
                 <div class="py-2 px-3 rounded-pill expertise fw-semibold">{{ $e }}</div>
             @endforeach
         </div>
 
-        <h5 class="mt-5 fw-bold">Education</h5>
+        <h5 class="mt-5 fw-bold">@lang('texts.lawyers-page.education')</h5>
         <h6>{{ $lawyer->education }}</h6>
 
         {{-- Rating & Review Form HERE --}}
         @if (auth()->check() && $lawyer->user_appointment_status === 'Completed')
-            <h5 class="mt-5 fw-bold">Give Rating and Review</h5>
+            <h5 class="mt-5 fw-bold">@lang('texts.lawyers-page.rating')</h5>
             <form action="{{ route('updateRatingReview', ['userId' => auth()->id(), 'lawyerId' => $lawyer->id]) }}"
                 method="POST" class="mt-2">
                 @csrf
                 <div class="mb-3">
-                    <label for="rating" class="form-label fw-bold">Rating</label>
+                    <label for="rating" class="form-label fw-bold">@lang('texts.lawyers-page.lawyer-card.rating')</label>
                     <select id="rating" name="rating" class="form-select" required>
-                        <option value="" disabled selected>Select Rating</option>
+                        <option value="" disabled selected>@lang('texts.lawyers-page.select-rating')</option>
                         @for ($i = 1; $i <= 5; $i++)
                             <option value="{{ $i }}">{{ $i }}</option>
                         @endfor
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="review" class="form-label fw-bold">Review</label>
+                    <label for="review" class="form-label fw-bold">@lang('texts.lawyers-page.review')</label>
                     <textarea class="form-control @error('review') is-invalid @enderror" id="review" name="review" rows="3"
                         required>{{ old('review', $appointment->review ?? '') }}</textarea>
                     @error('review')
@@ -86,12 +86,12 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <button type="submit" class="btn btn-dark">@lang('texts.submit')</button>
             </form>
         @endif
 
-        <h5 class="mt-5 fw-bold">Reviews <span class="text-secondary ms-1 fw-normal"
-                style="font-size: 12pt">{{ $lawyer->appointments_total_ratings }} Rating(s)</span></h5>
+        <h5 class="mt-5 fw-bold">@lang('texts.lawyers-page.review') <span class="text-secondary ms-1 fw-normal"
+                style="font-size: 12pt">{{ $lawyer->appointments_total_ratings }} @lang('texts.lawyers-page.lawyer-card.rating')</span></h5>
         <div class="reviews">
             @if ($lawyer->appointments_total_ratings > 0)
                 @foreach ($completedAppointments as $a)
@@ -113,7 +113,7 @@
                     </div>
                 @endforeach
             @else
-                <h6>No Reviews</h6>
+                <h6>@lang('texts.lawyers-page.no-review')</h6>
             @endif
         </div>
     </div>

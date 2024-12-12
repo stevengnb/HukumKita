@@ -8,11 +8,11 @@
 
 @section('content')
     <div class="containerLawyer">
-        <h1>Browse Lawyers that Suit Your Needs</h1>
+        <h1>@lang('texts.lawyers-page.title')</h1>
         <div class="search-wrapper position-sticky sticky-top px-0 z-3">
             <form class="search-form d-flex" role="search" method="GET" action="{{ route('getLawyers') }}">
                 <input class="form-control me-2 rounded-pill py-2 px-3" type="search" name="search"
-                    placeholder="Search Lawyer's Name" aria-label="Search" value="{{ request('search') }}">
+                    placeholder="@lang('texts.lawyers-page.placeholder-search')" aria-label="Search" value="{{ request('search') }}">
                 <button class="btn btn-dark rounded-pill" type="submit">
                     <i class="bi bi-search"></i>
                 </button>
@@ -25,18 +25,18 @@
                     class="filter-form shadow-sm border border-1 rounded-4 p-4 position-sticky sticky-top z-2 d-flex flex-column"
                     action="{{ route('getLawyers') }}" method="GET">
                     <div class="mb-3">
-                        <label for="price_range" class="mb-2">Price Range</label>
+                        <label for="price_range" class="mb-2">@lang('texts.lawyers-page.filter.price')</label>
                         <select class="form-select" name="price_range" id="price_range">
-                            <option value="">All Price Range</option>
+                            <option value="">@lang('texts.lawyers-page.filter.price-options')</option>
                             <option value="1-3" {{ request('price_range') == '1-3' ? 'selected' : '' }}>1 - 3</option>
                             <option value="4-5" {{ request('price_range') == '4-5' ? 'selected' : '' }}>4 - 5</option>
                         </select>
                     </div>
 
                     <div class="mb-5">
-                        <label for="expertise" class="mb-2">Expertise</label>
+                        <label for="expertise" class="mb-2">@lang('texts.lawyers-page.filter.expertise')</label>
                         <select class="form-select" name="expertise" id="expertise">
-                            <option value="">All Expertise</option>
+                            <option value="">@lang('texts.lawyers-page.filter.expertise-option')</option>
                             @foreach ($expertises as $e)
                                 <option value="{{ $e->id }}" {{ request('expertise') == $e->id ? 'selected' : '' }}>
                                     {{ $e->name }}</option>
@@ -60,14 +60,14 @@
                                         <div class="d-flex flex-column flex-grow-1">
                                             <h5 class="card-title h4 fw-semibold">{{ $l->name }}</h5>
                                             <div class="d-flex flex-row align-items-center">
-                                                <p class="card-text">{{ $l->exp_years }} Year(s) of Experience</p>
+                                                <p class="card-text">{{ $l->exp_years }} @lang('texts.lawyers-page.lawyer-card.exp')</p>
                                                 <div class="mx-3 divider-vertical"></div>
                                                 <div>
                                                     <i class="bi bi-star-fill" style="color: #FEAF27;"></i>
                                                     {{ $l->appointments_avg_rating }}
                                                     <span
                                                         class="text-secondary fs-6 ms-2">{{ $l->appointments_total_ratings }}
-                                                        Rating(s)</span>
+                                                        @lang('texts.lawyers-page.lawyer-card.rating')</span>
                                                 </div>
                                             </div>
                                             <div class="d-flex flex-wrap gap-2 mt-2">
@@ -85,16 +85,18 @@
                                             <!-- Cek appointment status dan display button bsd status -->
                                             @if (auth()->check())
                                                 @if ($l->user_appointment_status === 'Pending')
-                                                    <button class="btn btn-warning" style="color: #6B450E;">Pending</button>
+                                                    <button class="btn btn-warning" style="color: #6B450E;">@lang('texts.lawyers-page.lawyer-card.btn-pending')</button>
                                                 @elseif ($l->user_appointment_status === 'Confirmed')
-                                                    <button class="btn btn-success">Confirmed</button>
+                                                    <button class="btn btn-success">@lang('texts.lawyers-page.lawyer-card.btn-confirmed')</button>
                                                 @elseif ($l->user_appointment_status === 'Completed')
-                                                    <button class="btn btn-dark">Already Consulted</button>
+                                                    <button class="btn btn-dark">@lang('texts.lawyers-page.lawyer-card.btn-done')</button>
                                                 @else
-                                                    <button class="btn btn-dark">Consult</button>
+                                                    {{-- <a class="" href="{{ route('getLawyerBooking', ['id' => $l->id]) }}"> --}}
+                                                        <button class="btn btn-dark">@lang('texts.lawyers-page.lawyer-card.btn')</button>
+                                                    {{-- </a> --}}
                                                 @endif
                                             @else
-                                                <button class="btn btn-secondary" disabled>Not Authorized</button>
+                                                <button class="btn btn-secondary" disabled>@lang('texts.lawyers-page.lawyer-card.btn-notauth')</button>
                                             @endif
                                         </div>
                                     </div>

@@ -8,26 +8,26 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="text-center mb-4">My Appointments</h1>
+        <h1 class="text-center mb-4">@lang('texts.app-table.title')</h1>
 
         @if ($appointments->isEmpty())
             <div class="alert alert-info text-center">
-                You have no appointments yet.
+                @lang('texts.app-table.no-app')
             </div>
         @else
             <table class="table table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">No.</th>
-                        <th scope="col">User</th>
+                        <th scope="col">@lang('texts.profile-page.user')</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Gender</th>
+                        <th scope="col">@lang('texts.profile-page.personal-info.phone-number')</th>
+                        <th scope="col">@lang('texts.profile-page.personal-info.gender')</th>
                         <th scope="col">DOB</th>
-                        <th scope="col">Lawyer</th>
-                        <th scope="col">Date & Time</th>
+                        <th scope="col">@lang('texts.profile-page.lawyer')</th>
+                        <th scope="col">@lang('texts.datetime')</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">@lang('texts.action')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,7 +54,7 @@
                                         method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                                        <button type="submit" class="btn btn-primary">@lang('texts.app-table.confirm-btn')</button>
                                     </form>
                                 @elseif ($appointment->status === 'Confirmed')
                                     <form
@@ -62,10 +62,10 @@
                                         method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="btn btn-success">Complete Booking</button>
+                                        <button type="submit" class="btn btn-success">@lang('texts.app-table.complete-btn')</button>
                                     </form>
                                 @elseif ($appointment->status === 'Completed')
-                                    <button class="btn btn-secondary" disabled>Completed Booking</button>
+                                    <button class="btn btn-secondary" disabled>@lang('texts.app-table.completed')</button>
                                 @endif
                             </td>
                         </tr>

@@ -11,7 +11,7 @@
                     type="search"
                     name="search"
                     value="{{ request('search') }}"
-                    placeholder="Search"
+                    placeholder="@lang('texts.articles-page.search-placeholder')"
                     aria-label="Search">
                 <button
                     class="btn btn-dark rounded-pill"
@@ -27,7 +27,7 @@
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     <i class="bi bi-pencil-square d-flex me-1"></i>
-                    <span>Create</span>
+                    <span>@lang('texts.articles-page.btn-create')</span>
                 </button>
             @endif
         </div>
@@ -37,7 +37,7 @@
             <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create new article</h5>
+                <h5 class="modal-title" id="exampleModalLabel">@lang('texts.articles-page.create-modal-header')</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -45,17 +45,17 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="title" class="form-label">Headline</label>
+                            <label for="title" class="form-label">@lang('texts.articles-page.headline')</label>
                             <input type="text" class="form-control" id="title" name="title" placeholder="Enter the article headline" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="form-label">Description</label>
+                            <label for="description" class="form-label">@lang('texts.articles-page.desc')</label>
                             <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter the article description" required></textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label for="expertise_id" class="form-label">Category</label>
+                            <label for="expertise_id" class="form-label">@lang('texts.articles-page.category')</label>
                             <select class="form-select" id="expertise_id" name="expertise_id" required>
                                 <option value="" selected disabled>Select a category</option>
                                 <option value="1">Marriage & Divorce</option>
@@ -68,12 +68,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="image" class="form-label">Banner Image</label>
+                            <label for="image" class="form-label">@lang('texts.articles-page.banner-img')</label>
                             <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
                         </div>
 
                         <div class="d-flex">
-                            <button type="submit" class="btn btn-primary ms-auto">Post</button>
+                            <button type="submit" class="btn btn-primary ms-auto">@lang('texts.articles-page.btn-post')</button>
                         </div>
                     </form>
                 </div>
@@ -82,7 +82,7 @@
         </div>
 
         {{-- Grid of 4 --}}
-        <h1>Popular Article</h1>
+        <h1>@lang('texts.articles-page.title')</h1>
         <section class="" style="margin:2rem 0; padding:0; width: 100%;">
             <div class="row" style="row-gap: 2rem;">
                 @foreach ($articles as $article)

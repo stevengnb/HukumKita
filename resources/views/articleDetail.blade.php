@@ -30,7 +30,7 @@
             {{$article->description}}
         </p>
 
-        <h5 class="mt-5 mb-3">Comment(s)</h5>
+        <h5 class="mt-5 mb-3">@lang('texts.articles-page.comment')</h5>
         <div class="mb-4">
             @if (!(Auth::guard('lawyer')->check()))
                 <form action="{{ route('comments.store') }}" method="POST" class="form-control d-flex flex-column py-3 px-4 rounded-4">
@@ -42,8 +42,8 @@
                             <h5 class="mb-0 ms-3">{{Auth::user()->username}}</h5>
                         @endif
                     </div>
-                    <textarea id="content" name="comment" class="border-0 mt-3 mb-3" style="width: 100%" placeholder="Add a comment..."></textarea>
-                    <button class="btn btn-dark align-self-end" style="width: fit-content">Comment</i></button>
+                    <textarea id="content" name="comment" class="border-0 mt-3 mb-3" style="width: 100%" placeholder="@lang('texts.articles-page.comment-placeholder')"></textarea>
+                    <button class="btn btn-dark align-self-end" style="width: fit-content">@lang('texts.articles-page.btn')</i></button>
                 </form>
             @endif
 

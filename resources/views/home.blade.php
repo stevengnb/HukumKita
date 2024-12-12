@@ -8,9 +8,9 @@
 
 @section('content')
     <div class="containerHome">
-        <h1 class="text-white">Simplify Your Legal Journey</h1>
-        <p class="text-white">LawConnect empowers you to book consultations with trusted lawyers, learn your rights, and navigate legal challenges</p>
-        <button class="btn-12"><span>Get Started</span></button>
+        <h1 class="text-white">@lang('texts.title')</h1>
+        <p class="text-white">{{ __('texts.title-2') }}</p>
+        <button class="btn-12"><span>{{ __('texts.button-start') }}</span></button>
         {{-- @if (Auth::guard('lawyer')->check())
         <h1>LAWYER YG LOGIN</h1>
         @else
@@ -19,7 +19,7 @@
         <img src="{{ asset('assets/home-bg.png') }}" alt="">
     </div>
     <div class="consultation position-relative rounded-5 overflow-hidden">
-        <h3 class="text-white">What Legal Consultation Do You Need?</h3>
+        <h3 class="text-white">{{ __('texts.consultation-title') }}</h3>
         <div class="cat z-1">
             @foreach ($categories as $category)
                 <a class="card category-card p-4 rounded-4 text-decoration-none" href="{{ route('getLawyers', ['expertise' => $category->id]) }}" >
@@ -34,7 +34,7 @@
         <img class="position-absolute bottom-0 end-0" style="width: 100%" src="{{ asset('assets/shape-wave-home.webp') }}" alt="">
     </div>
     <div class="article">
-        <h3>Latest Articles</h3>
+        <h3>{{ __('texts.article-title') }}</h3>
         <div class="cat">
             @foreach ($articles as $article)
                 <a class="card rounded-5 overflow-hidden position-relative article-card" href="{{ route('showArticleDetail', ['id'=>$article->id]) }}">
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="article">
-        <h3>Trusted Advice for Every Legal Concern!</h3>
+        <h3>{{ __('texts.review-title') }}</h3>
         <div class="cat">
             @foreach ($testimonials as $testimonial)
             <div class="card-testimonial rounded-4" style="position: relative; border: 0.5px solid rgba(0, 0, 0, 0.2);">

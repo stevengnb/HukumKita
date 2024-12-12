@@ -9,8 +9,8 @@
 @section('content')
     <div class="appointment-container">
         <div class="hero-section">
-            <h1>Book Your Appointment</h1>
-            <p>Consult with <span>{{ $lawyer->name }}</span>, an expert in {{ implode(', ', $lawyer->expertise_names) }}.
+            <h1>@lang('texts.booking-page.title')</h1>
+            <p>@lang('texts.booking-page.desc')<span>{{ $lawyer->name }}</span>, @lang('texts.booking-page.desc_2'){{ implode(', ', $lawyer->expertise_names) }}.
             </p>
         </div>
 
@@ -19,12 +19,12 @@
                 <img src="{{ Storage::url($lawyer->profile) }}" alt="Lawyer Profile Picture">
                 <h2>{{ $lawyer->name }}</h2>
                 <p><i class="bi bi-geo-alt"></i> {{ $lawyer->address }}</p>
-                <p><strong>Experience:</strong> {{ $lawyer->exp_years }} years</p>
-                <p><strong>Rate:</strong> @dollar($lawyer->rate)</p>
+                <p><strong>@lang('texts.exp'):</strong> {{ $lawyer->exp_years }} @lang('texts.years')</p>
+                <p><strong>@lang('texts.rate'):</strong> @dollar($lawyer->rate)</p>
             </div>
 
             <div class="booking-form border border-secondary-subtle rounded-5">
-                <h4 class="mb-4">Schedule Your Appointment</h4>
+                <h4 class="mb-4">@lang('texts.booking-page.form.title')</h4>
                 <form action="{{ route('appointments.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="lawyer_id" value="{{ $lawyer->id }}">
@@ -36,7 +36,7 @@
                     </div> -->
 
                     <div class="mb-3">
-                        <label for="dateTime" class="form-label">Select Date & Time</label>
+                        <label for="dateTime" class="form-label">@lang('texts.booking-page.form.label')</label>
                         <input type="datetime-local" id="dateTime" name="dateTime"
                             class="form-control @error('dateTime') is-invalid @enderror" required>
                         @error('dateTime')
@@ -44,7 +44,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-dark btn-md">Book Appointment</button>
+                    <button type="submit" class="btn btn-dark btn-md">@lang('texts.booking-page.form.btn')</button>
                 </form>
             </div>
         </div>

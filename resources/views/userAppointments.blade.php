@@ -8,22 +8,22 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="text-center mb-4">My Appointments</h1>
+        <h1 class="text-center mb-4">@lang('texts.app-table.title')</h1>
 
         @if ($appointments->isEmpty())
             <div class="alert alert-info text-center">
-                You have no appointments yet.
+                @lang('texts.app-table.no-app')
             </div>
         @else
             <table class="table table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">No.</th>
-                        <th scope="col">Lawyer</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Date & Time</th>
+                        <th scope="col">@lang('texts.profile-page.lawyer')</th>
+                        <th scope="col">@lang('texts.address')</th>
+                        <th scope="col">@lang('texts.datetime')</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">@lang('texts.action')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,12 +43,12 @@
                                 @if ($appointment->status === 'Pending' || $appointment->status === 'Confirmed')
                                     <a href="{{ route('getLawyer', ['id' => $appointment->lawyer->id]) }}"
                                         class="btn btn-primary btn-sm">
-                                        View Detail
+                                        @lang('texts.app-table.detail')
                                     </a>
                                 @elseif ($appointment->status === 'Completed')
                                     <a href="{{ route('getLawyer', ['id' => $appointment->lawyer->id]) }}"
                                         class="btn btn-success btn-sm">
-                                        Give Rating
+                                        @lang('texts.app-table.rating')
                                     </a>
                                 @endif
                             </td>
