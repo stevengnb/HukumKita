@@ -57,7 +57,7 @@ class AppointmentController extends Controller
     }
 
     public function updateAppointmentStatus($userId, $lawyerId, $newStatus)
-    {
+    {   
         Appointment::where('lawyer_id', $lawyerId)
             ->where('user_id', $userId)
             ->update(['status' => $newStatus]);
