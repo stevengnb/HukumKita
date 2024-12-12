@@ -20,20 +20,20 @@
         <div class="container">
             <div class="logo">
                 <img src="{{ asset('LawConnect.png') }}" alt="LawConnect Logo">
-                <h2>Seeking Justice Together</h2>
-                <p>Consult your legal issues, anytime and anywhere with LawConnect</p>
+                <h2>@lang('texts.login.heading')</h2>
+                <p>@lang('texts.login.body')</p>
             </div>
             <div class="in">
-                <h2 class="mb-3">Login to LawConnect</h2>
+                <h2 class="mb-3">@lang('texts.login.title')</h2>
                 <form class="form" method="POST" action="{{ route('login.process') }}">
                     @csrf
                     <div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
+                            <label for="email" class="form-label">@lang('texts.login.input-email')</label>
                             <input name="email" type="email" class="form-control" id="email" placeholder="">
                         </div>
                         <div class="input-password-container">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">@lang('texts.login.input-password')</label>
                             <div class="input-password">
                                 <input name="password" type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="">
                                 <i class="bi bi-eye-slash" id="togglePassword"></i>
@@ -42,12 +42,12 @@
                     </div>
                     <div class="d-grid mt-5">
                         <button class="btn btn-dark btn-lg" type="submit">{{ __('Login') }}</button>
-                        <p class="mt-3 mb-0 text-center">Don't have a LawConnect account yet? <a href="{{ route('register') }}">Register</a></p>
+                        <p class="mt-3 mb-0 text-center">@lang('texts.login.reg') <a href="{{ route('register') }}">Register</a></p>
 
                         <div class="divider"></div>
-                        <p class="mb-2">Are you a LawConnect Lawyer?</p>
+                        <p class="mb-2">@lang('texts.login.login-lawyer')</p>
                         <a class="btn btn-outline-dark d-flex align-items-center justify-content-center" href="{{ route('lawyer.login') }}">
-                            Login as a Lawyer <i class="bi bi-arrow-right-circle ms-2 d-flex"></i>
+                            @lang('texts.login.btn-lawyer-login') <i class="bi bi-arrow-right-circle ms-2 d-flex"></i>
                         </a>
                     </div>
 

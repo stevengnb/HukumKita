@@ -29,7 +29,7 @@ return [
 
     'footer' => [
         'desc' => 'LawConnect adalah platform berbasis web yang memungkinkan pengguna untuk memesan konsultasi hukum dengan mudah, mengakses artikel edukasi hukum, dan terhubung dengan pengacara terverifikasi, sehingga meningkatkan aksesibilitas, transparansi, dan literasi hukum publik di Indonesia.',
-        'more' => 'Lebih Tentang Kami',
+        'more' => 'Tentang Kami',
         'features' => [
             'title' => 'Fitur',
             'book' => 'Pesan Pengacara',
@@ -149,4 +149,18 @@ return [
         'complete-btn' => 'Selesaikan Pemesanan',
         'completed' => 'Pemesanan Selesai'
     ],
+
+    'login' => [
+        'heading' => 'Mencari Keadilan Bersama',
+        'body' => 'Konsultasikan masalah legal Anda, kapanpun dan dimanapun dengan LawConnect',
+        'title' => 'Masuk ke LawConnect',
+        'input-email' => 'Email',
+        'input-password' => 'Kata Sandi',
+        'btn' => 'Masuk',
+        'reg' => 'Belum memiliki akun LawConnect? ',
+        'btn-reg' => 'Daftar',
+        'login-lawyer' => 'Apakah kamu pengacara LawConnect?',
+        'btn-lawyer-login' => 'Masuk sebagai Lawyer',
+        'reg-lawyer' => 'Belum memiliki akun pengacara LawConnect?',
+    ]
 ];

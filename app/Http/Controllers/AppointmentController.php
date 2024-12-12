@@ -39,7 +39,7 @@ class AppointmentController extends Controller
     public function getUserAppointments()
     {
         $appointments = Appointment::with('lawyer')
-            ->where('user_id', auth()->id())
+            ->where('user_id', Auth::user()->id)
             ->get();
 
         return view('userAppointments', compact('appointments'));

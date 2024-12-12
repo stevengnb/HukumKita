@@ -20,20 +20,20 @@
         <div class="container">
             <div class="logo">
                 <img src="{{ asset('LawConnect-Lawyer.png') }}" alt="LawConnect Logo">
-                <h2>Seeking Justice Together</h2>
-                <p>Provide legal consultation services from anywhere and anytime according to your field of expertise</p>
+                <h2>@lang('texts.login.heading')</h2>
+                <p>@lang('texts.login.body')</p>
             </div>
             <div class="in">
-                <h2 class="mb-5">Login as Lawyer</h2>
+                <h2 class="mb-5">@lang('texts.login.btn-lawyer-login')</h2>
                 <form class="form" method="POST" action="{{ route('lawyer.login.process') }}">
                     @csrf
                     <div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
+                            <label for="email" class="form-label">@lang('texts.login.input-email')</label>
                             <input name="email" type="email" class="form-control" id="email" placeholder="">
                         </div>
                         <div class="input-password-container">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">@lang('texts.login.input-password')</label>
                             <div class="input-password">
                                 <input name="password" type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="">
                                 <i class="bi bi-eye-slash" id="togglePassword"></i>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="d-grid mt-5">
                         <button class="btn btn-dark btn-lg" type="submit">{{ __('Login') }}</button>
-                        <p class="mt-3 text-center">Don't have a LawConnect Lawyer account yet? <a href="{{ route('lawyer.register') }}">Register</a></p>
+                        <p class="mt-3 text-center">@lang('texts.login.reg-lawyer') <a href="{{ route('lawyer.register') }}">Register</a></p>
                     </div>
 
                     @if($errors->any())
