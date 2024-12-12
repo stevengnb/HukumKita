@@ -19,22 +19,22 @@
         <div class="container">
             <div class="logo">
                 <img src="{{ asset('LawConnect-Lawyer.png') }}" alt="LawConnect Logo">
-                <h2>Seeking Justice Together</h2>
-                <p>Provide legal consultation services from anywhere and anytime according to your field of expertise</p>
+                <h2>@lang('texts.login.heading')</h2>
+                <p>@lang('texts.login.body')</p>
             </div>
 
             <div class="in">
-                <h2 class="mb-3 text-center">Register as Lawyer</h2>
+                <h2 class="mb-3 text-center">@lang('texts.register.title-lawyer')</h2>
 
                 <div class="progress-container d-flex flex-row flex-fill justify-content-around position-relative">
                     <div class="step d-flex flex-column align-items-center" id="step-progress-1">
                         <span class="circle active mb-2">1</span>
-                        <p>Account Details</p>
+                        <p>@lang('texts.register.acc-det')</p>
                     </div>
                     <div class="line d-flex flex-fill position-absolute"></div>
                     <div class="step d-flex flex-column align-items-center" id="step-progress-2">
                         <span class="circle mb-2">2</span>
-                        <p class="text-center">Additional Information</p>
+                        <p class="text-center">@lang('texts.register.add-info')</p>
                     </div>
                 </div>
 
@@ -42,61 +42,61 @@
                     @csrf
                     <div id="step-1">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
+                            <label for="name" class="form-label">@lang('texts.profile-page.personal-info.name')</label>
                             <input name="name" type="text" class="form-control" id="name" placeholder="">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
+                            <label for="email" class="form-label">@lang('texts.login.input-email')</label>
                             <input name="email" type="email" class="form-control" id="email" placeholder="">
                         </div>
                         <div class="mb-3">
-                            <label for="inputPassword" class="form-label">Password</label>
+                            <label for="inputPassword" class="form-label">@lang('texts.login.input-password')</label>
                             <div class="input-password">
                                 <input name="password" type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="">
                                 <i class="bi bi-eye-slash" id="togglePassword"></i>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <label for="phoneNumber" class="form-label">@lang('texts.profile-page.personal-info.phone-number')</label>
                             <input name="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="">
                         </div>
                         <div class="mb-3 d-flex flex-row gap-3">
                             <div class="flex-fill">
-                                <label for="gender" class="form-label">Gender</label>
+                                <label for="gender" class="form-label">@lang('texts.profile-page.personal-info.gender')</label>
                                 {{-- <input name="gender" type="text" class="form-control" id="gender" placeholder="Your gender.."> --}}
                                 <div class="d-flex btn-group">
                                     <input type="radio" class="btn-check" name="gender" id="male" value="male" autocomplete="off">
-                                    <label class="btn btn-outline-dark" for="male">Male</label>
+                                    <label class="btn btn-outline-dark" for="male">@lang('texts.male')</label>
 
                                     <input type="radio" class="btn-check" name="gender" id="female" value="female" autocomplete="off">
-                                    <label class="btn btn-outline-dark" for="female">Female</label>
+                                    <label class="btn btn-outline-dark" for="female">@lang('texts.female')</label>
                                 </div>
                             </div>
                             <div class="flex-fill">
-                                <label for="dob" class="form-label">Date of Birth</label>
+                                <label for="dob" class="form-label">@lang('texts.profile-page.personal-info.dob')</label>
                                 <input name="dob" type="date" class="form-control" id="dob" placeholder="">
                             </div>
                         </div>
                         <div class="d-flex align-items-end" style="width: 100%">
                             <button type="button" id="nextToStep2" class="btn btn-outline-dark d-flex align-items-center justify-content-center ms-auto">
-                                Next <i class="bi bi-arrow-right-circle ms-2 d-flex"></i>
+                                @lang('texts.next') <i class="bi bi-arrow-right-circle ms-2 d-flex"></i>
                             </button>
                         </div>
                     </div>
 
                     <div id="step-2" style="display: none;">
                         <div class="mb-3 d-flex flex-column">
-                            <label for="profile">Upload Profile Picture</label>
+                            <label for="profile">@lang('texts.upload-pp')</label>
                             <img id="image_preview" class="rounded-circle mx-auto" src="https://lh5.googleusercontent.com/proxy/t08n2HuxPfw8OpbutGWjekHAgxfPFv-pZZ5_-uTfhEGK8B5Lp-VN4VjrdxKtr8acgJA93S14m9NdELzjafFfy13b68pQ7zzDiAmn4Xg8LvsTw1jogn_7wStYeOx7ojx5h63Gliw" alt="Preview Image" style="width: 150px; height: 150px; object-fit: cover; margin-top: 10px;">
                             <input required type="file" class="form-control-file" style="display: none;" id="profile" name="profile" accept="image/*" onchange="previewImage(event)">
                         </div>
                         <div class="mb-3 d-flex flex-row gap-3">
                             <div class="flex-fill">
-                                <label for="education" class="form-label">Education</label>
+                                <label for="education" class="form-label">@lang('texts.lawyers-page.education')</label>
                                 <input name="education" type="text" class="form-control" id="education" placeholder="">
                             </div>
                             <div class="flex-fill">
-                                <label for="address" class="form-label">Address</label>
+                                <label for="address" class="form-label">@lang('texts.address')</label>
                                 <input name="address" type="text" class="form-control" id="address" placeholder="">
                             </div>
                         </div>
@@ -104,7 +104,7 @@
 
                         </div>
                         <div class="mb-3">
-                            <label for="expertise" class="form-label">Areas of Expertise</label>
+                            <label for="expertise" class="form-label">@lang('texts.register.expertise')</label>
                             <div class="d-flex flex-wrap gap-2">
                                 @foreach ($expertiseOptions as $expertise)
                                     <input class="btn-check" type="checkbox" autocomplete="off" name="expertise[]" value="{{ $expertise->id }}" id="expertise-{{ $expertise->id }}"">
@@ -112,7 +112,7 @@
                                 @endforeach
                             </div>
 
-                            <small class="form-text text-muted">Select multiple expertise by clicking the boxes.</small>
+                            <small class="form-text text-muted">@lang('texts.register.expertise-desc')</small>
                             {{-- <select name="expertise[]" id="expertise" class="form-select" multiple>
                                 @foreach ($expertiseOptions as $expertise)
                                     <option value="{{ $expertise->id }}">{{ $expertise->name }}</option>
@@ -122,19 +122,19 @@
                         </div>
                         <div class="mb-3 d-flex flex-row gap-3">
                             <div class="flex-fill">
-                                <label for="experience" class="form-label">Experience Start Date</label>
+                                <label for="experience" class="form-label">@lang('texts.register.exp-start')</label>
                                 <input name="experience" type="date" class="form-control" id="experience" placeholder="">
                             </div>
                             <div class="flex-fill">
-                                <label for="rate" class="form-label">Rate</label>
+                                <label for="rate" class="form-label">@lang('texts.register.rate')</label>
                                 <input name="rate" type="number" class="form-control" id="rate" placeholder="">
                             </div>
                         </div>
                         <div class="d-grid">
                             <button type="button" id="backToStep1" class="btn btn-outline-dark d-flex align-items-center justify-content-center mb-3" style="width: fit-content">
-                                <i class="bi bi-arrow-left-circle me-2 d-flex"></i> Back
+                                <i class="bi bi-arrow-left-circle me-2 d-flex"></i> @lang('texts.back')
                             </button>
-                            <button class="btn btn-dark btn-lg" type="submit">{{ __('Register') }}</button>
+                            <button class="btn btn-dark btn-lg" type="submit">@lang('texts.login.btn-reg')</button>
                         </div>
                     </div>
 
@@ -143,7 +143,7 @@
                         <p class="mt-3 text-center">Already have a LawConnect account? <a href="{{ route('lawyer.login') }}">Login</a></p>
                     </div> --}}
 
-                    <p class="mt-3 text-center">Already have a LawConnect Lawyer account? <a href="{{ route('lawyer.login') }}">Login</a></p>
+                    <p class="mt-3 text-center">@lang('texts.register.login-lawyer') <a href="{{ route('lawyer.login') }}">@lang('texts.login.btn')</a></p>
 
                     @if($errors->any())
                         <div class="alert alert-danger" role="alert">
@@ -161,6 +161,17 @@
                     @endif
                 </form>
             </div>
+        </div>
+
+        <div class="dropdown position-absolute me-4 mt-3" style="top:0; right:0;">
+            <a class="nav-link dropdown-toggle" style="text-decoration: none;" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @lang('texts.language')
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                <li><a class="dropdown-item" href="{{ route('changeLang', ['lang'=>'en']) }}">@lang('texts.english')</a></li>
+                <li><a class="dropdown-item" href="{{ route('changeLang', ['lang'=>'id']) }}">@lang('texts.indo')</a></li>
+            </ul>
         </div>
     </div>
 </body>

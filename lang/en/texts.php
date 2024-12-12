@@ -26,6 +26,11 @@ return [
     'address' => 'Address',
     'action' => 'Action',
     'datetime' => 'Date & Time',
+    'male' => 'Male',
+    'female' => 'Female',
+    'upload-pp' => 'Upload Profile Picture',
+    'next' => 'Next',
+    'back' => 'Back',
 
     'footer' => [
         'desc' => 'LawConnect is a web-based platform enabling users to book legal consultations easily, access educational law articles, and connect with verified lawyers, enhancing accessibility, transparency, and public legal literacy in Indonesia.',
@@ -157,10 +162,25 @@ return [
         'input-email' => 'Email',
         'input-password' => 'Password',
         'btn' => 'Login',
-        'reg' => 'Don\'t have a LawConnect account yet? ',
+        'reg' => 'Don\'t have a LawConnect account yet?',
         'btn-reg' => 'Register',
         'login-lawyer' => 'Are you a LawConnect Lawyer?',
         'btn-lawyer-login' => 'Login as a Lawyer',
         'reg-lawyer' => 'Don\'t have a LawConnect Lawyer account yet?',
+    ],
+
+    'register' => [
+        'title' => 'Register to LawConnect',
+        'acc-det' => 'Account Details',
+        'add-info' => 'Additional Information',
+        'login' => 'Already have a LawConnect account?',
+        'reg-lawyer' => 'Join us as a LawConnect Lawyer',
+        'reg-lawyer-btn' => 'Join as a Lawyer',
+        'title-lawyer' => 'Register as Lawyer',
+        'login-lawyer' => 'Already have a LawConnect Lawyer account?',
+        'expertise' => 'Areas of Expertises',
+        'expertise-desc' => 'Select multiple expertise by clicking the boxes.',
+        'exp-start' => 'Experience Start Date',
+        'rate' => 'Rate'
     ]
 ];

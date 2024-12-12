@@ -26,6 +26,11 @@ return [
     'address' => 'Alamat',
     'action' => 'Aksi',
     'datetime' => 'Tanggal & Waktu',
+    'male' => 'Laki-laki',
+    'female' => 'Perempuan',
+    'upload-pp' => 'Unggah Foto Profil',
+    'next' => 'Lanjut',
+    'back' => 'Kembali',
 
     'footer' => [
         'desc' => 'LawConnect adalah platform berbasis web yang memungkinkan pengguna untuk memesan konsultasi hukum dengan mudah, mengakses artikel edukasi hukum, dan terhubung dengan pengacara terverifikasi, sehingga meningkatkan aksesibilitas, transparansi, dan literasi hukum publik di Indonesia.',
@@ -143,7 +148,7 @@ return [
     'app-table' => [
         'title' => 'Jadwal Temu Saya',
         'no-app' => 'Anda tidak memiliki jadwal temu saat ini.',
-        'detail' => 'Lihat Detil',
+        'detail' => 'Lihat Detail',
         'rating' => 'Beri Penilaian',
         'confirm-btn' => 'Konfirmasi Pemesanan',
         'complete-btn' => 'Selesaikan Pemesanan',
@@ -162,5 +167,20 @@ return [
         'login-lawyer' => 'Apakah kamu pengacara LawConnect?',
         'btn-lawyer-login' => 'Masuk sebagai Lawyer',
         'reg-lawyer' => 'Belum memiliki akun pengacara LawConnect?',
+    ],
+
+    'register' => [
+        'title' => 'Daftar ke LawConnect',
+        'acc-det' => 'Detail Akun',
+        'add-info' => 'Informasi Tambahan',
+        'login' => 'Sudah memiliki akun LawConnect?',
+        'reg-lawyer' => 'Gabung sebagai Pengacara LawConnect',
+        'reg-lawyer-btn' => 'Gabung sebagai Pengacara',
+        'title-lawyer' => 'Daftar Sebagai Pengacara',
+        'login-lawyer' => 'Sudah memiliki akun pengacara LawConnect?',
+        'expertise' => 'Bidang Keahlian',
+        'expertise-desc' => 'Pilih beberapa keahlian Anda dengan mengklik kotak.',
+        'exp-start' => 'Tanggal Mulai Pengalaman',
+        'rate' => 'Tarif'
     ]
 ];

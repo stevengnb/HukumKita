@@ -41,8 +41,8 @@
                         </div>
                     </div>
                     <div class="d-grid mt-5">
-                        <button class="btn btn-dark btn-lg" type="submit">{{ __('Login') }}</button>
-                        <p class="mt-3 mb-0 text-center">@lang('texts.login.reg') <a href="{{ route('register') }}">Register</a></p>
+                        <button class="btn btn-dark btn-lg" type="submit">@lang('texts.login.btn')</button>
+                        <p class="mt-3 mb-0 text-center">@lang('texts.login.reg') <a href="{{ route('register') }}">@lang('texts.login.btn-reg')</a></p>
 
                         <div class="divider"></div>
                         <p class="mb-2">@lang('texts.login.login-lawyer')</p>
@@ -67,6 +67,17 @@
                     @endif
                 </form>
             </div>
+        </div>
+
+        <div class="dropdown position-absolute me-4 mt-3" style="top:0; right:0;">
+            <a class="nav-link dropdown-toggle" style="text-decoration: none;" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @lang('texts.language')
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                <li><a class="dropdown-item" href="{{ route('changeLang', ['lang'=>'en']) }}">@lang('texts.english')</a></li>
+                <li><a class="dropdown-item" href="{{ route('changeLang', ['lang'=>'id']) }}">@lang('texts.indo')</a></li>
+            </ul>
         </div>
     </div>
 </body>
