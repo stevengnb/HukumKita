@@ -10,7 +10,9 @@
     <div class="containerHome">
         <h1 class="text-white">@lang('texts.title')</h1>
         <p class="text-white text-center">{{ __('texts.title-2') }}</p>
-        <button class="btn-12"><span>{{ __('texts.button-start') }}</span></button>
+        <a href="{{ route('getLawyers') }}">
+            <button class="btn-12"><span>{{ __('texts.button-start') }}</span></button>
+        </a>
         {{-- @if (Auth::guard('lawyer')->check())
         <h1>LAWYER YG LOGIN</h1>
         @else
