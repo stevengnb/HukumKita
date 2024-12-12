@@ -47,7 +47,7 @@ class LawyerController extends Controller
 
             $lawyer->user_appointment_status = null;
             if (Auth::check()) {
-                $userAppointment = $lawyer->appointments->where('user_id', auth()->user()->id)->first();
+                $userAppointment = $lawyer->appointments->where('user_id', Auth::user()->id)->first();
                 $lawyer->user_appointment_status = $userAppointment ? $userAppointment->status : null;
             }
         }
@@ -72,7 +72,7 @@ class LawyerController extends Controller
         $lawyer->user_appointment_status = null;
 
         if (Auth::check()) {
-            $userAppointment = $lawyer->appointments->where('user_id', auth()->user()->id)->first();
+            $userAppointment = $lawyer->appointments->where('user_id', Auth::user()->id)->first();
             $lawyer->user_appointment_status = $userAppointment ? $userAppointment->status : null;
         }
 

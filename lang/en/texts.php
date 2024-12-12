@@ -148,5 +148,19 @@ return [
         'confirm-btn' => 'Confirm Booking',
         'complete-btn' => 'Complete Booking',
         'completed' => 'Completed Booking'
+    ],
+
+    'login' => [
+        'heading' => 'Seeking Justice Together',
+        'body' => 'Consult your legal issues, anytime and anywhere with LawConnect',
+        'title' => 'Login to LawConnect',
+        'input-email' => 'Email',
+        'input-password' => 'Password',
+        'btn' => 'Login',
+        'reg' => 'Don\'t have a LawConnect account yet? ',
+        'btn-reg' => 'Register',
+        'login-lawyer' => 'Are you a LawConnect Lawyer?',
+        'btn-lawyer-login' => 'Login as a Lawyer',
+        'reg-lawyer' => 'Don\'t have a LawConnect Lawyer account yet?',
     ]
 ];
