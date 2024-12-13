@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/component.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-    {{-- ini pake bootstrap icons mau pake cdn ato engga? ini gw pake cdn dlu --}}
+    <link rel="icon" type="image/png" href="{{ asset('LawConnect-Logo.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
