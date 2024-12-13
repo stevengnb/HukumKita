@@ -26,7 +26,7 @@ class User extends Authenticatable
         'phoneNumber',
         'gender',
         'dob',
-        'profile',
+        'profileLink',
     ];
 
     public function appointments()

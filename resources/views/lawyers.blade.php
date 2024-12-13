@@ -53,7 +53,7 @@
                             href="{{ route('getLawyer', ['id' => $l->id]) }}">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src={{ Storage::url($l->profile) }} class="img-fluid rounded-start">
+                                    <img src="data:image/jpeg;base64,{{ base64_encode($l->profileLink) }}" class="img-fluid rounded-start">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body d-flex flex-column" style="height: 100%;">

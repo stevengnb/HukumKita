@@ -49,9 +49,11 @@
                 <div class="dropdown">
                     <a class="profile-img" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         @if (Auth::guard('lawyer')->check())
-                            <img src="{{ Storage::url(Auth::guard('lawyer')->user()->profile) }}" alt="">
+                            <img src="data:image/jpeg;base64,{{ base64_encode(Auth::guard('lawyer')->user()->profileLink) }}" alt="Profile Image">
+                            {{-- <img src="{{ Storage::url(Auth::guard('lawyer')->user()->profile) }}" alt=""> --}}
                         @else
-                            <img src="{{ Storage::url(Auth::user()->profile) }}" alt="">
+                            <img src="data:image/jpeg;base64,{{ base64_encode(Auth::user()->profileLink) }}" alt="Profile Image">
+                            {{-- <img src="{{ Storage::url(Auth::user()->profile) }}" alt=""> --}}
                         @endif
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">

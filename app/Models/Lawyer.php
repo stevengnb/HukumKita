@@ -21,7 +21,7 @@ class Lawyer extends Authenticatable
         'address',
         'experience',
         'rate',
-        'profile',
+        'profileLink',
     ];
 
     protected $hidden = [

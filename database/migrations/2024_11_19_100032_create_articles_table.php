@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -17,12 +18,14 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->date('createDate');
-            $table->string('imagePath');
+            // $table->string('imagePath');
             $table->unsignedBigInteger('lawyer_id');
             $table->foreign('lawyer_id')->on('lawyers')->references('id')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('expertise_id');
             $table->foreign('expertise_id')->on('lawyers')->references('id')->onUpdate('cascade')->onDelete('cascade');
         });
+
+        DB::statement("ALTER TABLE articles ADD imagePath MEDIUMBLOB");
     }
 
     /**

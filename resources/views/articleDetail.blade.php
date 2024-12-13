@@ -13,10 +13,10 @@
             <h1 class="text-center mb-3" style="width: 60%">{{$article->title}}</h1>
             <div class="py-2 px-3 rounded-pill" style="background-color: rgba(21, 57, 105, 0.15); color: rgba(21, 57, 105, 1); width: fit-content; font-size: 12pt">{{ $article->expertise->name }}</div>
         </div>
-        <img class="rounded-5 mb-4" src={{Storage::url($article->imagePath)}} alt="Image" style="width:100%; height:40rem; object-fit: cover;" >
+        <img class="rounded-5 mb-4" src="data:image/jpeg;base64,{{ base64_encode($article->imagePath) }}" alt="ImageASDAD" style="width:100%; height:40rem; object-fit: cover;" >
         <div class="d-flex flex-row align-items-center">
             <a class="d-flex flex-row align-items-center underline text-black" href="{{ route('getLawyer', ['id'=> $article->lawyer_id]) }}">
-                <img class="rounded-circle me-3" style="width: 35px; height: 35px; object-fit: cover" src="{{Storage::url($article->lawyer->profile)}}" alt="">
+                <img class="rounded-circle me-3" style="width: 35px; height: 35px; object-fit: cover" src="data:image/jpeg;base64,{{ base64_encode($article->lawyer->profileLink) }}" alt="">
                 <h5 class="mb-0">{{$article->lawyer->name}}</h5>
             </a>
 
@@ -38,7 +38,7 @@
                     <input type="hidden" name="article_id" value="{{ $article->id }}">
                     <div class="d-flex flex-row align-items-center">
                         @if (Auth::check())
-                            <img class="rounded-circle" style="width: 40px; height: 40px; object-fit:cover" src="{{Storage::url(Auth::user()->profile)}}" alt="">
+                            <img class="rounded-circle" style="width: 40px; height: 40px; object-fit:cover" src="data:image/jpeg;base64,{{ base64_encode(Auth::user()->profileLink) }}" alt="">
                             <h5 class="mb-0 ms-3">{{Auth::user()->username}}</h5>
                         @endif
                     </div>
@@ -60,7 +60,7 @@
         <div class="container-fluid d-flex flex-column gap-4">
             @foreach ($comments as $c)
                 <div class="d-flex flex-row" style="width: 100%;">
-                    <img class="rounded-circle" style="width: 40px; height: 40px; object-fit:cover" src="{{Storage::url($c->user->profile)}}" alt="">
+                    <img class="rounded-circle" style="width: 40px; height: 40px; object-fit:cover" src="data:image/jpeg;base64,{{ base64_encode($c->user->profileLink) }}"alt="">
 
                     <div class="d-flex flex-column ms-3" style="flex-grow: 1;"> <!-- Allow this to grow -->
                         <div class="d-flex flex-row justify-content-between">

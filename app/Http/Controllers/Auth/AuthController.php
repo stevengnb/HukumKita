@@ -43,7 +43,7 @@ class AuthController extends Controller
             'gender' => $data['gender'],
             'dob' => $data['dob'],
             'password' => Hash::make($data['password']),
-            'profile' => $data['profile'],
+            'profileLink' => $data['profile'],
           ]);
     }
 
@@ -56,12 +56,15 @@ class AuthController extends Controller
             'dob' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'profile' => 'required|image|mimes:jpeg,png,jpg|max:5120',
+            'profile' => 'required|image|mimes:jpeg,png,jpg|max:1024',
         ]);
 
         $data = $request->all();
-        if($request->hasFile('profile')) {
-            $data['profile'] = $request->file('profile')->store('user_profiles', 'public');
+        // if($request->hasFile('profile')) {
+        //     $data['profile'] = $request->file('profile')->store('user_profiles', 'public');
+        // }
+        if ($request->hasFile('profile')) {
+            $data['profile'] = file_get_contents($request->file('profile')->getRealPath());
         }
 
         $user = $this->create($data);
@@ -83,7 +86,7 @@ class AuthController extends Controller
             'address' => $data['address'],
             'experience' => $data['experience'],
             'rate' => $data['rate'],
-            'profile' => $data['profile'],
+            'profileLink' => $data['profile'],
         ]);
     }
 
@@ -100,14 +103,17 @@ class AuthController extends Controller
             'address' => 'required',
             'experience' => 'required',
             'rate' => 'required',
-            'profile' => 'required|image|mimes:jpeg,png,jpg',
+            'profile' => 'required|image|mimes:jpeg,png,jpg|max:1024',
             'expertise' => 'required|array',
             'expertise.*' => 'exists:expertises,id'
         ]);
 
         $data = $request->all();
-        if($request->hasFile('profile')) {
-            $data['profile'] = $request->file('profile')->store('lawyer_profiles', 'public');
+        // if($request->hasFile('profile')) {
+        //     $data['profile'] = $request->file('profile')->store('lawyer_profiles', 'public');
+        // }
+        if ($request->hasFile('profile')) {
+            $data['profile'] = file_get_contents($request->file('profile')->getRealPath());
         }
 
         $lawyer = $this->createLawyer($data);

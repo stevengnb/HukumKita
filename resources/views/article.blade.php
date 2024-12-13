@@ -88,7 +88,7 @@
                 @foreach ($articles as $article)
                     <div class="col-3">
                         <a class="card h-100 rounded-4 overflow-hidden" style="text-align: justify; text-decoration: none; color: black;" href="/articles/{{$article->id}}">
-                            <img class="card-img-top" src={{Storage::url($article->imagePath)}} alt="Image" style="width:100%; height:14rem;" >
+                            <img class="card-img-top" src="data:image/jpeg;base64,{{ base64_encode($article->imagePath) }}" alt="Image" style="width:100%; height:14rem;" >
 
                             <div class="card-body">
                                 <div class="py-2 px-3 rounded-pill" style="background-color: rgba(21, 57, 105, 0.15); color: rgba(21, 57, 105, 1); width: fit-content; font-size: 10pt">{{ $article->expertise->name }}</div>
