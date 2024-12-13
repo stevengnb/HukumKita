@@ -29,6 +29,15 @@ class User extends Authenticatable
         'profile',
     ];
 
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -52,13 +61,4 @@ class User extends Authenticatable
         ];
     }
 
-    public function appointments()
-    {
-        return $this->hasMany(Appointment::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class, 'user_id', 'id');
-    }
 }
