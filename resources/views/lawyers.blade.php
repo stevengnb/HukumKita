@@ -83,6 +83,7 @@
                                             <h5 class="mb-0 fw-semibold">@dollar($l->rate)</h5>
 
                                             <!-- Cek appointment status dan display button bsd status -->
+                                            
                                             @if (auth()->check())
                                                 @if ($l->user_appointment_status === 'Pending')
                                                     <button class="btn btn-warning" style="color: #6B450E;">@lang('texts.lawyers-page.lawyer-card.btn-pending')</button>

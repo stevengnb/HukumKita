@@ -20,7 +20,6 @@ Route::middleware(['auth:web,lawyer'])->group(function () {
 
 Route::middleware(['auth:lawyer'])->group(function () {
     Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
-    Route::get('/lawyers/booking/{id}', [LawyerController::class, 'getLawyerBookingPage'])->name('getLawyerBooking');
     Route::get('lawyer/myappointments', [AppointmentController::class, 'getLawyerAppointments'])->name('lawyer.appointments');
     Route::put('lawyer/myappointments/{userId}/{lawyerId}/{newStatus}', [AppointmentController::class, 'updateAppointmentStatus'])->name('updateAppointmentStatus');
     Route::delete('/lawyer/delete-lawyer', [AuthController::class, 'deleteLawyer'])->name('lawyer.deleteAccount');
@@ -28,6 +27,7 @@ Route::middleware(['auth:lawyer'])->group(function () {
 });
 
 Route::middleware(['auth:web'])->group(function () {
+    Route::get('/lawyers/booking/{id}', [LawyerController::class, 'getLawyerBookingPage'])->name('getLawyerBooking');
     Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
     Route::post('/update-rating-review/{userId}/{lawyerId}', [AppointmentController::class, 'updateRatingReview'])->name('updateRatingReview');
     Route::post('/comment', [CommentController::class, 'store'])->name('comments.store');

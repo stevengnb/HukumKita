@@ -150,9 +150,9 @@
                     <div class="mb-3">
                         <h6 class="text-secondary">@lang('texts.profile-page.personal-info.role')</h6>
                         @if (Auth::guard('lawyer')->check())
-                            <h6>@lang('texts.profile-page.user')</h6>
-                        @else
                             <h6>@lang('texts.profile-page.lawyer')</h6>
+                        @else
+                            <h6>@lang('texts.profile-page.user')</h6>
                         @endif
                     </div>
 

@@ -29,7 +29,7 @@
 
             <div class="d-flex flex-column">
                 <h3 class="align-self-end mb-1">@dollar($lawyer->rate)</h3>
-                @if (auth()->check())
+                @if (!Auth::guard('lawyer')->check())
                     @if ($lawyer->user_appointment_status === 'Pending')
                         <button class="btn btn-warning" style="color: #6B450E;">@lang('texts.lawyers-page.lawyer-card.btn-pending')</button>
                     @elseif ($lawyer->user_appointment_status === 'Confirmed')
