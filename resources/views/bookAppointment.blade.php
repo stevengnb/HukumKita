@@ -16,7 +16,7 @@
 
         <div class="main-content">
             <div class="lawyer-profile border border-secondary-subtle rounded-5">
-                <img src="{{ Storage::url($lawyer->profile) }}" alt="Lawyer Profile Picture">
+                <img src="data:image/jpeg;base64,{{ base64_encode($lawyer->profileLink) }}" class="img-fluid rounded-circle">
                 <h2>{{ $lawyer->name }}</h2>
                 <p><i class="bi bi-geo-alt"></i> {{ $lawyer->address }}</p>
                 <p><strong>@lang('texts.exp'):</strong> {{ $lawyer->exp_years }} @lang('texts.years')</p>
