@@ -35,8 +35,7 @@ Route::middleware(['auth:web'])->group(function () {
     Route::delete('/delete-user', [AuthController::class, 'deleteUser'])->name('user.deleteAccount');
 
 });
-
-
+    
 // user auth
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');

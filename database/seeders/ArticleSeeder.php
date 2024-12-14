@@ -21,12 +21,12 @@ class ArticleSeeder extends Seeder
         $lawyersId = Lawyer::pluck('id')->toArray();
         $categoryId = Expertise::pluck('id')->toArray();
 
-        for ($i = 0; $i < 100; ++$i) {
+        for ($i = 0; $i < 20; ++$i) {
             Article::insert([
                 'title' => $faker->sentence,
                 'description' => $faker->text,
                 'createDate' => $faker->dateTimeBetween('-1 years', 'now'),
-                'imagePath' => 'articles/law-article.jpg',
+                'imagePath' => file_get_contents(public_path('images/law-article.jpg')),
                 'lawyer_id' => $faker->randomElement($lawyersId),
                 'expertise_id' => $faker->randomElement($categoryId),
             ]);

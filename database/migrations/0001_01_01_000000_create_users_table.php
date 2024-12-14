@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -18,7 +19,7 @@ return new class extends Migration
             $table->string('username');
             $table->string(column: 'phoneNumber');
             $table->string(column: 'gender');
-            $table->string('profile');
+            // $table->string('profile');
             $table->date(column: 'dob');
             $table->string(column: 'password');
             // $table->rememberToken();
@@ -39,6 +40,8 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        DB::statement("ALTER TABLE users ADD profileLink MEDIUMBLOB");
     }
 
     /**

@@ -11,7 +11,7 @@
         <div class="d-flex align-items-stretch">
             <img
                 class="lawyer-img rounded-5"
-                src="{{ Storage::url($lawyer->profile) }}"
+                src="data:image/jpeg;base64,{{ base64_encode($lawyer->profileLink) }}"
                 style="object-fit: cover; width: 200px; height: 100%;">
         </div>
 
@@ -103,7 +103,7 @@
                             </div>
 
                             <div class="d-flex flex-row align-items-center mb-2">
-                                <img class="rounded-circle me-2" src="{{ Storage::url($a->user->profile) }}"
+                                <img class="rounded-circle me-2" src="data:image/jpeg;base64,{{ base64_encode($a->user->profileLink) }}"
                                     alt="">
                                 <h5 class="mb-0">{{ $a->user->name }}</h5>
                             </div>

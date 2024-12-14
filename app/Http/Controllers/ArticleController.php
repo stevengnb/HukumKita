@@ -31,7 +31,8 @@ class ArticleController extends Controller
         ]);
 
         // Save the image to storage
-        $imagePath = $request->file('image')->store('articles', 'public');
+        // $imagePath = $request->file('image')->store('articles', 'public');
+        $imagePath = file_get_contents($request->file('image')->getRealPath());
 
         // Create the article
         Article::create([

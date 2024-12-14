@@ -11,9 +11,10 @@
     <div class="d-flex flex-row align-items-center justify-content-between card p-5 rounded-5">
         <div class="d-flex flex-row align-items-center">
             @if (Auth::guard('lawyer')->check())
-                <img class="profile" src="{{Storage::url(Auth::guard('lawyer')->user()->profile)}}" alt="">
+                {{-- <img class="profile" src="{{Storage::url(Auth::guard('lawyer')->user()->profile)}}" alt=""> --}}
+                <img class="profile" src="data:image/jpeg;base64,{{ base64_encode(Auth::guard('lawyer')->user()->profileLink) }}" alt="Profile Image">
             @else
-                <img class="profile" src="{{Storage::url(Auth::user()->profile)}}" alt="">
+                <img class="profile" src="data:image/jpeg;base64,{{ base64_encode(Auth::user()->profileLink) }}" alt="Profile Image">
             @endif
             <div class="ms-5">
                 @if (Auth::guard('lawyer')->check())
