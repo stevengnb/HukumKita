@@ -1,7 +1,10 @@
 textarea:focus {
-    outline: none; /* Removes the focus outline */
+    outline: none;
 }
 
-textarea{
+textarea {
     resize: none;
+}
+p {
+    word-break: break-word;
 }

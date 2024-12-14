@@ -24,8 +24,6 @@
             <h6 class="mb-0">{{\Carbon\Carbon::parse($article->createDate)->translatedFormat('l, j F Y')}}</h6>
         </div>
 
-
-
         <p class="mt-5">
             {{$article->description}}
         </p>
