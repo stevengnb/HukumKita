@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: law-connect
+  labels:
+    app: law-connect
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: law-connect
+  template:
+    metadata:
+      labels:
+        app: law-connect
+    spec:
+      containers:
+        - name: law-connect
+          image: stevengnb/law-connect:0.6
+          ports:
+            - containerPort: 80
